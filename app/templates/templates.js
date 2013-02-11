@@ -27,6 +27,24 @@ templates['album_root'] = template(function (Handlebars,depth0,helpers,partials,
 
 
   return "<header class=\"header\">\n	<div class=\"header-primary clearfix\">\n		<h1>Dean, Lucie, Felix and Milo Moses</h1>\n	</div>\n</header>\n<section class=\"album root\">\n	<section id=\"thumbnails\"></section>\n</section>\n";});
+templates['album_root_body'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers; data = data || {};
+  var buffer = "", stack1, foundHelper, functionType="function";
+
+
+  buffer += "<section class=\"thumbnails\">";
+  foundHelper = helpers.thumbnails;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.thumbnails; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</section>";
+  return buffer;});
+templates['album_root_header'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers; data = data || {};
+  
+
+
+  return "<div class=\"header-primary clearfix\">\n	<h1>Dean, Lucie, Felix and Milo Moses</h1>\n</div>";});
 templates['album_week'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
   var buffer = "", stack1, stack2, foundHelper, functionType="function", escapeExpression=this.escapeExpression, self=this;
@@ -63,24 +81,30 @@ function program1(depth0,data) {
   return buffer;});
 templates['album_week_body'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
-  var buffer = "", stack1, stack2, functionType="function", self=this;
+  var buffer = "", stack1, stack2, foundHelper, functionType="function", self=this;
 
 function program1(depth0,data) {
   
-  var buffer = "", stack1, foundHelper;
-  buffer += "<section class=\"album-description\">";
-  foundHelper = helpers.description;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.description; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  var buffer = "", stack1;
+  buffer += "<section class=\"description\">";
+  stack1 = depth0.album;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.description;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</section>";
   return buffer;}
 
-  stack1 = depth0.description;
+  stack1 = depth0.album;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.description;
   stack2 = {};
   stack1 = helpers['if'].call(depth0, stack1, {hash:stack2,inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n<section id=\"thumbnails\"></section>";
+  buffer += "\n<section class=\"thumbnails\">";
+  foundHelper = helpers.thumbnails;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.thumbnails; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</section>";
   return buffer;});
 templates['album_week_header'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
@@ -129,24 +153,30 @@ function program1(depth0,data) {
   return buffer;});
 templates['album_year_body'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
-  var buffer = "", stack1, stack2, functionType="function", self=this;
+  var buffer = "", stack1, stack2, foundHelper, functionType="function", self=this;
 
 function program1(depth0,data) {
   
-  var buffer = "", stack1, foundHelper;
-  buffer += "<section class=\"album-description\">";
-  foundHelper = helpers.description;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.description; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  var buffer = "", stack1;
+  buffer += "<section class=\"description\">";
+  stack1 = depth0.album;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.description;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</section>";
   return buffer;}
 
-  stack1 = depth0.description;
+  stack1 = depth0.album;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.description;
   stack2 = {};
   stack1 = helpers['if'].call(depth0, stack1, {hash:stack2,inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n<section id=\"thumbnails\"></section>";
+  buffer += "\n<section class=\"thumbnails\">";
+  foundHelper = helpers.thumbnails;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.thumbnails; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</section>";
   return buffer;});
 templates['album_year_header'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
@@ -178,11 +208,13 @@ templates['layout_main'] = template(function (Handlebars,depth0,helpers,partials
   foundHelper = helpers.header;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.header; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1) + "\n		</div>\n	</section>\n	<div class=\"container-table-row body\">\n		<div class=\"container-table-cell\" id=\"body\">\n			";
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n		</div>\n	</section>\n	<div class=\"container-table-row body\">\n		<div class=\"container-table-cell\" id=\"body\">\n			";
   foundHelper = helpers.body;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.body; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1) + "\n		</div>\n	</div>\n</div>";
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n		</div>\n	</div>\n</div>";
   return buffer;});
 templates['thumbnail'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
