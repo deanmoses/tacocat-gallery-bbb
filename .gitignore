@@ -1,0 +1,11 @@
+# SASS intermediate compile files
+*.scssc
+
+# SASS cache directory
+.sass-cache/
+
+# temporary editor save files
+*~
+
+# OSX thumnail caches
+.DS_Store

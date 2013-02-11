@@ -1,0 +1,200 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "fonts";
+@import "utilities";
+
+$titleColor: #fff;
+
+html, body, #page {
+	height: 100%;
+	margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+html {
+    font-family: "HelveticaNeue", Arial, sans-serif;
+    font-size: 14px;
+    color: $colorTextPrimary;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+a,
+a:before {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover,
+a:hover:before,
+a:hover:after,
+a.active,
+a.active:before,
+a.active:after {
+    //color: $colorPrimaryHover !important;
+}
+
+//
+// The container table is used to layout the overall page
+//
+
+.container-table {
+    display: table;
+    height: 100%;
+    width: 100%;
+	overflow: hidden;	
+}
+	
+.container-table-row {
+	display: table-row;
+}
+
+.container-table-cell {
+	display: table-cell;
+}
+
+#header, #body {
+	padding: 1em;
+}
+
+#header {
+	position: relative;
+	color: white;
+	background-color: $colorDarkGraySecondary;
+	border-top: 1px solid rgba(255,255,255,.1);
+	border-bottom: solid $colorBorderDarkPrimary 2px;
+
+	h1 {
+		font-family: 'VAGRoundedBT-Regular';
+		font-size: 1.8em;
+		color: $titleColor;
+		letter-spacing: -.02em;
+		cursor: pointer;
+	}
+}
+
+#body {
+	height: 100%;
+	overflow: hidden;
+	background-color: lightyellow;
+}
+
+// hide the photo edit controls unless the user is a site admin
+body:not(.is-site-admin) .admin-controls {
+	display: none;
+}
+
+/*
+ * The photo and album captions
+ */
+.caption {
+	font-size: 1.3em;
+	max-width: 40em;
+	
+	p {
+		margin-top: 0.5em;
+	}
+	
+	p, li {
+	  line-height: 1.5;
+	}
+	
+	a {
+	  color: inherit;
+	}
+	
+	strong, b {
+	  font-weight: bold;
+	}
+	
+	i, em {
+	  font-style: italic;
+	}
+	
+	li {
+	  margin-left: 30px;
+	}
+	
+	ul li {
+	  list-style: disc outside;
+	}
+	
+	ol li {
+	  list-style: decimal outside;
+	}
+	
+	li img {
+	  vertical-align: middle;
+	  margin: 2px 5px 5px 0;
+	}
+	
+	//
+	// The .wysiwyg styles are in support of caption content added 
+	// by the wysihtml5 rich text editor
+	//
+	
+	.wysiwyg-color-black {
+	  color: black;
+	}
+	
+	.wysiwyg-color-silver {
+	  color: silver;
+	}
+	
+	.wysiwyg-color-gray {
+	  color: gray;
+	}
+	
+	.wysiwyg-color-white {
+	  color: white;
+	}
+	
+	.wysiwyg-color-maroon {
+	  color: maroon;
+	}
+	
+	.wysiwyg-color-red {
+	  color: red;
+	}
+	
+	.wysiwyg-color-purple {
+	  color: purple;
+	}
+	
+	.wysiwyg-color-fuchsia {
+	  color: fuchsia;
+	}
+	
+	.wysiwyg-color-green {
+	  color: green;
+	}
+	
+	.wysiwyg-color-lime {
+	  color: lime;
+	}
+	
+	.wysiwyg-color-olive {
+	  color: olive;
+	}
+	
+	.wysiwyg-color-yellow {
+	  color: yellow;
+	}
+	
+	.wysiwyg-color-navy {
+	  color: navy;
+	}
+	
+	.wysiwyg-color-blue {
+	  color: blue;
+	}
+	
+	.wysiwyg-color-teal {
+	  color: teal;
+	}
+	
+	.wysiwyg-color-aqua {
+	  color: aqua;
+	}
+}
