@@ -48,33 +48,6 @@ function($, Backbone, Handlebars) {
 				Views: {}
 			}, additionalProps);
 		},
-
-		/**
-		 * Helper for using layouts
-		 */
-		useLayout: function(name, options) {
-			// Enable variable arity by allowing the first argument to be the options
-			// object and omitting the name argument.
-			if (_.isObject(name)) {
-				options = name;
-			}
-
-			// Ensure options is an object.
-			options = options || {};
-
-			// if a name property was specified, use that as the template.
-			if (_.isString(name)) {
-				options.template = name;
-			}
-
-			// Create a new Layout with options.
-			var layout = new Backbone.Layout(_.extend({
-				el: "#main"
-			}, options));
-
-			// Cache the refererence.
-			return this.layout = layout;
-		},
 		
 		/**
 		 * Helper for managing templates
@@ -83,8 +56,14 @@ function($, Backbone, Handlebars) {
 		 * @param context - the model attributes, or whatever data you pass to a template
 		 */
 		renderTemplate : function(templateId, context) {
-			console.log("app.renderTemplate(["+templateId+"])");
-			return this.getTemplate(templateId)(context);
+			//console.log("app.renderTemplate(["+templateId+"])");
+			try {
+				var template = this.getTemplate(templateId);
+				if (!template) throw "Error retrieving template [" + templateId + "]";
+				return template(context);				
+			} catch(err) {
+				console.log("failed to retrieve or compile template [" + templateId + "]: " + err);
+			}
 		},
 		
 		/**
@@ -94,15 +73,21 @@ function($, Backbone, Handlebars) {
 		 */
 		getTemplate : function(templateId) {
 			if (Handlebars.templates === undefined || Handlebars.templates[templateId] === undefined) {
+				console.log("app.getTemplate("+templateId+"): fetching from server");
 				$.ajax({
 					url : 'app/templates/' + templateId + '.handlebars',
-					success : function(data) {
-						if (Handlebars.templates === undefined) {
-							Handlebars.templates = {};
-						}
-						Handlebars.templates[templateId] = Handlebars.compile(data);
-					},
 					async : false
+				}).done(function(data) {
+					if (Handlebars.templates === undefined) {
+						Handlebars.templates = {};
+					}
+					try {
+						Handlebars.templates[templateId] = Handlebars.compile(data);
+					} catch(err) {
+						console.log("failed to compile template [" + templateId + "]: " + err);
+					}
+				}).fail(function(data, textStatus, jqXHR) {
+					console.log("failed to retrieve template [" + templateId + "]: " + textStatus);
 				});
 			}
 			return Handlebars.templates[templateId];			

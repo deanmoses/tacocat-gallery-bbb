@@ -59,6 +59,22 @@ module.exports = function(grunt) {
       }
     },
 
+	// The handlebars task compiles all handlebars templates into
+	// JavaScript functions.
+	//
+	handlebars: {
+
+        built: {
+            src: ['app/templates/**/*.handlebars'],
+            dest: 'app/templates/templates.js',
+            handlebarsOptions:{
+                    data: true,
+                    stringParams: true
+                }
+          }
+
+	},
+
     // This task uses James Burke's excellent r.js AMD build tool.  In the
     // future other builders may be contributed as drop-in alternatives.
     requirejs: {

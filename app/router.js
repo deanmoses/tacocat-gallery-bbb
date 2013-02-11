@@ -3,11 +3,9 @@
  *
  * This file follows the AMD javascript module format.
  */
-define([
-	"app",  // The main application module
-	"modules/album" // The module with all the album logic and views
-],
-function(app, Album) {
+define(["app", // The main application module
+"modules/album" // The module with all the album logic and views
+], function(app, Album) {
 
 	/**
 	 * The application router.  You can attach sub routers here.
@@ -23,7 +21,7 @@ function(app, Album) {
 		 * Show the album page
 		 */
 		viewAlbum: function(path) {
-			console.log("Router.viewAlbum(path: [" + path + "])");
+			//console.log("Router.viewAlbum(path: [" + path + "])");
 
 			// regularize path by getting rid of any preceding or trailing slashes
 			path = this.normalizePath(path);
@@ -33,7 +31,10 @@ function(app, Album) {
 				console("Couldn't find album " + path + ". Error: ", xhr, options);
 			}).done(function(album) {
 				//console.log("URL router viewAlbum() got album " + path + ".  Album: " , album);
-				new Album.Views.Week({model: album,el: $('#main')}).render();
+				new Album.Views.Main({
+					model: album,
+					el: $('#main')
+				}).render();
 			});
 		},
 
