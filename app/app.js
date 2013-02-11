@@ -57,8 +57,8 @@ function($, Backbone, Handlebars) {
 		 */
 		renderTemplate : function(templateId, context) {
 			//console.log("app.renderTemplate(["+templateId+"])");
-			//var template = this.getTemplate(templateId);
-			var template = Handlebars.getTemplate(templateId);
+			var template = this.getTemplate(templateId);
+			//var template = Handlebars.getTemplate(templateId);
 			if (!template) throw "Error retrieving template [" + templateId + "]";
 			return template(context);				
 		},

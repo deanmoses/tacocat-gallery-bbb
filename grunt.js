@@ -12,8 +12,7 @@ module.exports = function(grunt) {
     lint: {
       files: [
         "build/config.js", "app/**/*.js"
-      ],
-      exclude: ["app/templates/templates.js"]
+      ]
     },
 
     // The jshint option for scripturl is set to lax, because the anchor
@@ -21,8 +20,7 @@ module.exports = function(grunt) {
     // route.
     jshint: {
       options: {
-        scripturl: true,
-        exclude: ["app/templates/templates.js"]
+        scripturl: true
       }
     },
 

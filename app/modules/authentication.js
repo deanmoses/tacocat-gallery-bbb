@@ -45,7 +45,7 @@ function(app) {
 		 * model is actually fetched from the server.
 		 */
 		isAuthenticated : function() {
-			return this.get("isAuthenticated") == true;
+			return this.get("isAuthenticated") === true;
 		},
 		
 		/**
@@ -56,7 +56,7 @@ function(app) {
 		 * model is actually fetched from the server.
 		 */
 		isSiteAdmin : function() {
-			return this.get("isSiteAdmin") == true;
+			return this.get("isSiteAdmin") === true;
 		}
   });
 
