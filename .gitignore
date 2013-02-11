@@ -9,3 +9,6 @@
 
 # OSX thumnail caches
 .DS_Store
+
+# log files
+*.log

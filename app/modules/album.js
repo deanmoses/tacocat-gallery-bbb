@@ -14,6 +14,7 @@ function(app) {
 	//
 	// MODELS
 	//
+	
 	/**
 	 * Represents an album.
 	 *
@@ -177,40 +178,37 @@ function(app) {
 	//
 	
 	/**
-	 * Display a week album
+	 * Display an album
 	 */
-	Album.Views.Week = Backbone.View.extend({
+	Album.Views.Main = Backbone.View.extend({
 
 		initialize: function() {
 			_.bindAll(this, "render");
-			//this.listenTo(this.model, "change", this.render);
 		},
 
 		render: function() {
-			//console.log("Album.Views.Week.render() model: ", this.model);
+			//console.log("Album.Views.Main.render() model: ", this.model);
 
+			// Render different types of albums differently
+			var albumType = this.model.attributes.albumType;
+
+			var albumTypeRenderers = Album.Views[albumType];
+			if (!albumTypeRenderers) {
+				throw "Unknown album type: [" + albumType + "]";
+			}
+			
 			// Blank the page
 			this.$el.empty();
 
 			// Generate the header HTML
-			var headerHtml = app.renderTemplate('album_week_header', this.model.attributes);
-
+			var headerHtml = app.renderTemplate('album_' + albumType + '_header', this.model.attributes);
+			
 			// Generate the thumbnail HTML
-			var thumbnailHtml;
-			_.each(this.model.get("children"), function(child) {
-				//console.log("Album.Views.Week.render() thumbnail child: " + child.title);
-				thumbnailHtml += app.renderTemplate('thumbnail', child);
-			});
-
-			// Generate the body HTML
-			var bodyHtml = app.renderTemplate('album_week_body', {
-				album: this.model,
-				thumbnails: thumbnailHtml
-			});
+			var bodyHtml = Album.Views[albumType].getBodyHtml(this.model);
 
 			// Generate the layout HTML
 			var html = app.renderTemplate('layout_main', {
-				pageType: 'album week',
+				pageType: 'album ' + albumType,
 				header: headerHtml,
 				body: bodyHtml
 			});
@@ -222,29 +220,47 @@ function(app) {
 			return this;
 		}
 	});
+	
+	//
+	// VIEW HELPERS
+	// These help generate the above views
+	//
+	
+	/**
+	 * Define an object to store the HTML generators for the week albums.
+	 */
+	Album.Views.week = {};
+	
+	/**
+	 * Generate the HTML for the body of a week album
+	 */
+	Album.Views.week.getBodyHtml = function(album) {
+			// Generate the thumbnail HTML
+			var thumbnailHtml;
+			_.each(album.get("children"), function(child) {
+				//console.log("Album.Views.Week.render() thumbnail child: " + child.title);
+				thumbnailHtml += app.renderTemplate('thumbnail', child);
+			});
+
+			// Generate the body HTML
+			return app.renderTemplate('album_week_body', {
+				album: album,
+				thumbnails: thumbnailHtml
+			});
+	};
 
 	/**
-	 * Display a week album
+	 * Define an object to store the HTML generators for the year albums.
 	 */
-	Album.Views.Year = Backbone.View.extend({
+	Album.Views.year = {};
 
-		initialize: function() {
-			_.bindAll(this, "render");
-			//this.listenTo(this.model, "change", this.render);
-		},
-
-		render: function() {
-			//console.log("Album.Views.Year.render() model: ", this.model);
-
-			// Blank the page
-			this.$el.empty();
-
-			// Generate the header HTML
-			var headerHtml = app.renderTemplate('album_year_header', this.model.attributes);
-
+	/**
+	 * Generate the HTML for the body of a year album
+	 */
+	Album.Views.year.getBodyHtml = function(album) {
 			// Generate the thumbnail HTML
 			// Group the child week albums of the year album by month
-			var months = _.groupBy(this.model.get("children"), function(child) {
+			var months = _.groupBy(album.get("children"), function(child) {
 				// create a new javascript Date object based on the timestamp
 				// multiplied by 1000 so that the argument is in milliseconds, not seconds
 				var date = new Date(child.creationTimestamp * 1000);
@@ -270,48 +286,25 @@ function(app) {
 			}
 
 			// Generate the body HTML
-			var bodyHtml = app.renderTemplate('album_year_body', {
-				album: this.model,
+			return app.renderTemplate('album_year_body', {
+				album: album,
 				thumbnails: thumbnailHtml
 			});
-
-			// Generate the layout HTML
-			var html = app.renderTemplate('layout_main', {
-				pageType: 'album year',
-				header: headerHtml,
-				body: bodyHtml
-			});
-
-			// Write the HTML to the DOM
-			this.$el.html(html);
-
-			// To support chaining
-			return this;
-		}
-	});
-
+	};
 
 	/**
-	 * Display the root album
+	 * Define an object to store the HTML generators for the root album.
 	 */
-	Album.Views.Root = Backbone.View.extend({
+	Album.Views.root = {};
 
-		initialize: function() {
-			_.bindAll(this, "render");
-		},
-
-		render: function(layout) {
-			console.log("Album.Views.Root.render() model: ", this.model);
-
-			// Blank the page
-			this.$el.empty();
-
-			// Generate the header HTML
-			var headerHtml = app.renderTemplate('album_root_header', this.model.attributes);
-
+	/**
+	 * Generate the body HTML for the root album
+	 */
+	Album.Views.root.getBodyHtml = function(album) {
+	
 			// Generate the thumbnail HTML
 			var thumbnailHtml;
-			_.each(this.model.get("children"), function(child) {
+			_.each(album.get("children"), function(child) {
 				//console.log("Album.Views.Root.render() thumbnail child: " + child.title);
 				thumbnailHtml += app.renderTemplate('thumbnail', child);
 			});
@@ -381,67 +374,12 @@ function(app) {
 			});
 
 			// Generate the body HTML
-			var bodyHtml = app.renderTemplate('album_week_body', {
-				album: this.model,
+			return app.renderTemplate('album_week_body', {
+				album: album,
 				thumbnails: thumbnailHtml
 			});
-
-			// Generate the layout HTML
-			var html = app.renderTemplate('layout_main', {
-				pageType: 'album root',
-				header: headerHtml,
-				body: bodyHtml
-			});
-
-			// Write the HTML to the DOM
-			this.$el.html(html);
-
-			// To support chaining
-			return this;
-		}
-	});
-
-	/**
-	 * Display an album.  Brokers to one of the renderers for a specific type of album
-	 */
-	Album.Views.Main = Backbone.View.extend({
-
-		initialize: function() {
-			_.bindAll(this, "render");
-		},
-
-		render: function(layout) {
-			//console.log("Album.Views.Main.render() model: ", this.model);
-
-			// Render different types of albums differently
-			var albumType = this.model.attributes.albumType;
-			// A year album
-			if (albumType == "week") {
-				new Album.Views.Week({
-					model: this.model,
-					el: $('#main')
-				}).render();
-			} else if (albumType == "year") {
-				new Album.Views.Year({
-					model: this.model,
-					el: $('#main')
-				}).render();
-			} else if (albumType == "root") {
-				new Album.Views.Root({
-					model: this.model,
-					el: this.$el
-				}).render();
-			} else {
-				throw "Unknown album type: [" + albumType + "]";
-			}
-
-			// To support chaining
-			return this;
-		}
-	});
-
+	};
 
 	// Return the module for AMD compliance.
 	return Album;
-
 });

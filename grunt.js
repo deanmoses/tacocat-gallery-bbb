@@ -58,6 +58,29 @@ module.exports = function(grunt) {
         additional: []
       }
     },
+    
+	// compass watches SASS stylesheets and compiles them to CSS
+	//
+	//
+	compass: {
+	    dev: {
+				//  config: 'includes/baby/config.rb',
+	        //bundleExec: true,
+	        src:  "app/styles/scss",
+	        dest: 'app/styles/css',
+	        debugsass: true,
+	        outputstyle: 'expanded',
+	        linecomments: true
+	    },
+	    prod: {
+	        src:  "app/styles/scss",
+	        dest: 'app/styles/css',
+	        outputstyle: 'expanded',
+	        debugsass: false,
+	        linecomments: false,
+	        forcecompile: true
+	    }
+	},
 
 	// The handlebars task compiles all handlebars templates into
 	// JavaScript functions.
@@ -197,7 +220,7 @@ module.exports = function(grunt) {
     // (use if you have a custom server, PhoneGap, Adobe Air, etc.)
     watch: {
       files: ["grunt.js", "vendor/**/*", "app/**/*"],
-      tasks: "styles"
+      tasks: ["compass:dev", "styles"]
     },
 
     // The clean task ensures all files are removed from the dist/ directory so
@@ -249,6 +272,6 @@ module.exports = function(grunt) {
 
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "debug min mincss");
+  grunt.registerTask("release", "debug min compass:prod mincss");
 
 };
