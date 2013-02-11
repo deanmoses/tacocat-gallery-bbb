@@ -265,7 +265,7 @@ function(app) {
 						albums: months[i]
 					};
 					//console.log("Month: ", month);
-					thumbnailHtml += app.renderTemplate('thumbnail_month_template', month);
+					thumbnailHtml += app.renderTemplate('thumbnail_month', month);
 				}
 			}
 
