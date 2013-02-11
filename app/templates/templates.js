@@ -1,3 +1,21 @@
+Handlebars.getTemplate = function(templateId) {
+			if (Handlebars.templates === undefined || Handlebars.templates[templateId] === undefined) {
+				console.log("app.getTemplate("+templateId+"): fetching from server");
+				$.ajax({
+					url : 'app/templates/' + templateId + '.handlebars',
+					async : false
+				}).done(function(data) {
+					if (Handlebars.templates === undefined) {
+						Handlebars.templates = {};
+					}
+					Handlebars.templates[templateId] = Handlebars.compile(data);
+				}).fail(function(data, textStatus, jqXHR) {
+					console.log("failed to retrieve template [" + templateId + "]: " + textStatus);
+				});
+			}
+			return Handlebars.templates[templateId];			
+		};
+
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['album_body_header'] = template(function (Handlebars,depth0,helpers,partials,data) {

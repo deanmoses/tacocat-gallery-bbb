@@ -57,13 +57,10 @@ function($, Backbone, Handlebars) {
 		 */
 		renderTemplate : function(templateId, context) {
 			//console.log("app.renderTemplate(["+templateId+"])");
-			try {
-				var template = this.getTemplate(templateId);
-				if (!template) throw "Error retrieving template [" + templateId + "]";
-				return template(context);				
-			} catch(err) {
-				console.log("failed to retrieve or compile template [" + templateId + "]: " + err);
-			}
+			//var template = this.getTemplate(templateId);
+			var template = Handlebars.getTemplate(templateId);
+			if (!template) throw "Error retrieving template [" + templateId + "]";
+			return template(context);				
 		},
 		
 		/**
@@ -81,11 +78,7 @@ function($, Backbone, Handlebars) {
 					if (Handlebars.templates === undefined) {
 						Handlebars.templates = {};
 					}
-					try {
-						Handlebars.templates[templateId] = Handlebars.compile(data);
-					} catch(err) {
-						console.log("failed to compile template [" + templateId + "]: " + err);
-					}
+					Handlebars.templates[templateId] = Handlebars.compile(data);
 				}).fail(function(data, textStatus, jqXHR) {
 					console.log("failed to retrieve template [" + templateId + "]: " + textStatus);
 				});
@@ -93,6 +86,6 @@ function($, Backbone, Handlebars) {
 			return Handlebars.templates[templateId];			
 		}
 		
-	}, Backbone.Events);
+	});
 
 });

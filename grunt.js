@@ -12,7 +12,8 @@ module.exports = function(grunt) {
     lint: {
       files: [
         "build/config.js", "app/**/*.js"
-      ]
+      ],
+      exclude: ["app/templates/templates.js"]
     },
 
     // The jshint option for scripturl is set to lax, because the anchor
@@ -20,7 +21,8 @@ module.exports = function(grunt) {
     // route.
     jshint: {
       options: {
-        scripturl: true
+        scripturl: true,
+        exclude: ["app/templates/templates.js"]
       }
     },
 
@@ -45,42 +47,20 @@ module.exports = function(grunt) {
       // Out the concatenated contents of the following styles into the below
       // development file path.
       "dist/debug/index.css": {
-        // Point this to where your `index.css` file is location.
-        src: "app/styles/index.css",
+        // Location of the source `index.css` file
+        src: "app/styles/css/index.css",
 
         // The relative path to use for the @imports.
-        paths: ["app/styles"],
+        paths: ["app/styles/css"],
 
         // Point to where styles live.
-        prefix: "app/styles/",
+        prefix: "app/styles/css",
 
         // Additional production-only stylesheets here.
         additional: []
       }
     },
     
-	// compass watches SASS stylesheets and compiles them to CSS
-	//
-	//
-	compass: {
-	    dev: {
-				//  config: 'includes/baby/config.rb',
-	        //bundleExec: true,
-	        src:  "app/styles/scss",
-	        dest: 'app/styles/css',
-	        debugsass: true,
-	        outputstyle: 'expanded',
-	        linecomments: true
-	    },
-	    prod: {
-	        src:  "app/styles/scss",
-	        dest: 'app/styles/css',
-	        outputstyle: 'expanded',
-	        debugsass: false,
-	        linecomments: false,
-	        forcecompile: true
-	    }
-	},
 
 	// The handlebars task compiles all handlebars templates into
 	// JavaScript functions.
@@ -125,8 +105,9 @@ module.exports = function(grunt) {
       dist: {
         src: [
           "vendor/js/libs/almond.js",
-          "dist/debug/templates.js",
-          "dist/debug/require.js"
+          "vendor/jam/handlebars.runtime/handlebars.runtime-1.0.rc.1.js",
+          "app/templates/templates.js",
+          "dist/debug/require.js",
         ],
 
         dest: "dist/debug/require.js",
@@ -220,27 +201,27 @@ module.exports = function(grunt) {
     // (use if you have a custom server, PhoneGap, Adobe Air, etc.)
     watch: {
       files: ["grunt.js", "vendor/**/*", "app/**/*"],
-      tasks: ["compass:dev", "styles"]
+      tasks: ["styles"]
     },
 
     // The clean task ensures all files are removed from the dist/ directory so
     // that no files linger from previous builds.
     clean: ["dist/"],
 
-    // If you want to generate targeted `index.html` builds into the `dist/`
+    // If you want to generate targeted index.html builds into the `dist/`
     // folders, uncomment the following configuration block and use the
     // conditionals inside `index.html`.
-    //targethtml: {
-    //  debug: {
-    //    src: "index.html",
-    //    dest: "dist/debug/index.html"
-    //  },
-    //
-    //  release: {
-    //    src: "index.html",
-    //    dest: "dist/release/index.html"
-    //  }
-    //},
+	targethtml: {
+		debug: {
+			src: "index.html",
+			dest: "dist/debug/index.html"
+		},
+		 
+		release: {
+			src: "index.html",
+			dest: "dist/release/index.html"
+		}
+	},
     
     // This task will copy assets into your build directory,
     // automatically.  This makes an entirely encapsulated build into
@@ -268,10 +249,11 @@ module.exports = function(grunt) {
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.
-  grunt.registerTask("debug", "clean lint jst requirejs concat styles");
-
+  //grunt.registerTask("debug", "clean lint jst requirejs concat styles");
+  //grunt.registerTask("debug", "clean lint jst requirejs concat styles");
+  grunt.registerTask("debug", "clean targethtml jst requirejs concat styles");
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "debug min compass:prod mincss");
+  grunt.registerTask("release", "debug min mincss");
 
 };
