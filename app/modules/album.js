@@ -236,7 +236,7 @@ function(app) {
 	 */
 	Album.Views.week.getBodyHtml = function(album) {
 			// Generate the thumbnail HTML
-			var thumbnailHtml;
+			var thumbnailHtml = "";
 			_.each(album.get("children"), function(child) {
 				//console.log("Album.Views.Week.render() thumbnail child: " + child.title);
 				thumbnailHtml += app.renderTemplate('thumbnail', child);
@@ -273,7 +273,7 @@ function(app) {
 
 			// Render the months in reverse chronological order
 			// month[0] = January
-			var thumbnailHtml;
+			var thumbnailHtml = "";
 			for (var i = 11; i >= 0; i--) {
 				if (months[i]) {
 					var month = {
@@ -303,7 +303,7 @@ function(app) {
 	Album.Views.root.getBodyHtml = function(album) {
 	
 			// Generate the thumbnail HTML
-			var thumbnailHtml;
+			var thumbnailHtml = "";
 			_.each(album.get("children"), function(child) {
 				//console.log("Album.Views.Root.render() thumbnail child: " + child.title);
 				thumbnailHtml += app.renderTemplate('thumbnail', child);
