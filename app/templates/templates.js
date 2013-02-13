@@ -1,21 +1,3 @@
-Handlebars.getTemplate = function(templateId) {
-			if (Handlebars.templates === undefined || Handlebars.templates[templateId] === undefined) {
-				console.log("app.getTemplate("+templateId+"): fetching from server");
-				$.ajax({
-					url : 'app/templates/' + templateId + '.handlebars',
-					async : false
-				}).done(function(data) {
-					if (Handlebars.templates === undefined) {
-						Handlebars.templates = {};
-					}
-					Handlebars.templates[templateId] = Handlebars.compile(data);
-				}).fail(function(data, textStatus, jqXHR) {
-					console.log("failed to retrieve template [" + templateId + "]: " + textStatus);
-				});
-			}
-			return Handlebars.templates[templateId];			
-		};
-
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['album_body_header'] = template(function (Handlebars,depth0,helpers,partials,data) {
@@ -311,5 +293,77 @@ templates['thumbnail_earlyyears'] = template(function (Handlebars,depth0,helpers
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.title; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1) + "</a>\n</div>";
+  return buffer;});
+templates['thumbnail_month'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers; data = data || {};
+  var buffer = "", stack1, stack2, foundHelper, functionType="function", escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, stack2, foundHelper;
+  buffer += "\n<div class=\"thumbnail\">\n		<a href=\"#";
+  foundHelper = helpers.url;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.url; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1) + "\"><img src=\"";
+  stack1 = depth0.thumbnail;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.url;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "\" width=\"";
+  stack1 = depth0.thumbnail;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.width;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "px\" height=\"";
+  stack1 = depth0.thumbnail;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.height;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "px\" alt=\"";
+  stack1 = depth0.thumbnail;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.title;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "\"/></a>\n		<a href=\"#";
+  foundHelper = helpers.url;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.url; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1) + "\" style=\"width:";
+  stack1 = depth0.thumbnail;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.width;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "px\" class=\"title\">";
+  foundHelper = helpers.title;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.title; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1) + "</a>\n		";
+  stack1 = depth0.summary;
+  stack2 = {};
+  stack1 = helpers['if'].call(depth0, stack1, {hash:stack2,inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n	</div>\n	";
+  return buffer;}
+function program2(depth0,data) {
+  
+  var buffer = "", stack1, foundHelper;
+  buffer += "<div style=\"width:";
+  stack1 = depth0.thumbnail;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.width;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "px\" class=\"summary\">";
+  foundHelper = helpers.summary;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.summary; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</div>";
+  return buffer;}
+
+  buffer += "<fieldset>\n	<legend>";
+  foundHelper = helpers.name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1) + "</legend>\n	";
+  stack1 = depth0.albums;
+  stack2 = {};
+  stack1 = helpers.each.call(depth0, stack1, {hash:stack2,inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n</fieldset>";
   return buffer;});
 })();

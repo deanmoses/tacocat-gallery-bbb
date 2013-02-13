@@ -12,7 +12,8 @@ require.config({
 
 	paths: {
 		// use the underscore build of Lo-Dash to minimize incompatibilities
-//		lodash: "../vendor/jam/lodash/lodash.underscore.min"
+		lodash: "../vendor/jam/lodash/lodash.underscore.min",
+		compiled_templates: "templates/templates"
 	},
 
 	map: {

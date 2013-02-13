@@ -1,4 +1,8 @@
-
+/**
+ * Module that kicks off the app.
+ *
+ * This file follows the AMD javascript module format.
+ */
 require([
   // require that app.js be loaded first, and passed into this module via tha 'app' parameter below
   "app",
@@ -8,28 +12,15 @@ require([
   // require that router.js be loaded first, and passed into this module via the 'Router' parameter below
   "router"
 ],
-
 function(app, authentication, Router) {
+	console.log("main()");
+
+	app.authenticationModel = new authentication.Model();
+	app.authenticationView = new authentication.View({model:app.authenticationModel});
 	
- app.authenticationModel = new authentication.Model();
+	// Fetching the model will trigger a render of the authentication view,
+	// which writes some CSS classes into the body tag
 	app.authenticationModel.fetch({
-		success : function(model, response, options) {
-			//console.log("gallery.authentication.fetch() - success.  model: ", model);
-			
-			if (model.isAuthenticated()) {
-				$("body").addClass('authenticated');
-			}
-			else {
-				$("body").removeClass('authenticated');
-			}
-			
-			if (model.isSiteAdmin()) {
-				$("body").addClass('is-site-admin');
-			}
-			else {
-				$("body").removeClass('is-site-admin');
-			}
-		},
 		error : function(model, xhr, options) {
 			console.log("gallery.authentication.fetch() - error.  xhr: ", xhr);
 		}

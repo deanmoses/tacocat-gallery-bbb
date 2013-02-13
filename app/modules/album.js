@@ -314,7 +314,7 @@ function(app) {
 				url: "/pix/2006/index.php",
 				title: "2006",
 				thumbnail: {
-					url: "/pix/img/2006-reading.jpg",
+					url: "2006-reading.jpg",
 					height: 75,
 					width: 150
 				}
@@ -322,7 +322,7 @@ function(app) {
 				url: "/pix/2005/index.php",
 				title: "2005",
 				thumbnail: {
-					url: "/pix/img/2005-bath.jpg",
+					url: "2005-bath.jpg",
 					height: 75,
 					width: 150
 				}
@@ -330,7 +330,7 @@ function(app) {
 				url: "/pix/2004/index.php",
 				title: "2004",
 				thumbnail: {
-					url: "/pix/img/2004_fall_milo.jpg",
+					url: "2004_fall_milo.jpg",
 					height: 75,
 					width: 75
 				}
@@ -338,7 +338,7 @@ function(app) {
 				url: "/pix/2003/index.php",
 				title: "2003",
 				thumbnail: {
-					url: "/pix/img/21months_small.jpg",
+					url: "21months_small.jpg",
 					height: 75,
 					width: 75
 				}
@@ -346,7 +346,7 @@ function(app) {
 				url: "/pix/2002/index.php",
 				title: "2002",
 				thumbnail: {
-					url: "/pix/img/1year_small.jpg",
+					url: "1year_small.jpg",
 					height: 75,
 					width: 75
 				}
@@ -354,7 +354,7 @@ function(app) {
 				url: "/pix/2001/index.php",
 				title: "2001",
 				thumbnail: {
-					url: "/pix/img/felix_small.jpg",
+					url: "felix_small.jpg",
 					height: 75,
 					width: 75
 				}
@@ -362,7 +362,7 @@ function(app) {
 				url: "/pix/1973/dean/index.php",
 				title: "1973",
 				thumbnail: {
-					url: "/pix/img/1973-dean-2weeks-thumb.jpg",
+					url: "1973-dean-2weeks-thumb.jpg",
 					height: 75,
 					width: 75
 				}

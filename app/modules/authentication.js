@@ -1,16 +1,23 @@
-// Authentication module
+/**
+ * Authentication module.
+ *
+ * This file follows the AMD javascript module format.
+ */
 define([
-  // Application.
+  // I require the 'app' module
   "app"
 ],
-
 // Map dependencies from above array.
 function(app) {
 
-  // Create a new module.
+  // create a new module
   var Authentication = app.module();
 
-  // Default Model.
+	/**
+	 * Authentication Model
+	 * 
+	 * Main task is to answer the question:  is the user authenticated?
+	 */
   Authentication.Model = Backbone.Model.extend({
 	
 		/**
@@ -19,7 +26,7 @@ function(app) {
 		initialize : function() {
 			// Ensure that the 'this' variable is pointing to myself 
 			// in the specified methods in all contexts
-    	_.bindAll(this, "isAuthenticated", "isSiteAdmin");
+    		_.bindAll(this, "isAuthenticated", "isSiteAdmin");
 		},
 	
 		/**
@@ -60,7 +67,47 @@ function(app) {
 		}
   });
 
+	/**
+	 * Authentication View
+	 * 
+	 * If the user is authenticated, write some classes into the body tag.
+	 */
+	Authentication.View = Backbone.View.extend({
+		
+		/**
+		 * Called when a new instance of this view is created
+		 */
+		initialize : function() {
+			// Ensure that the 'this' variable is pointing to myself 
+			// in the specified methods in all contexts
+	    	_.bindAll(this, "render");
+	
+			// When the model changes, call render()
+			this.listenTo(this.model, "change", this.render);
+		},
+		
+		/**
+		 * If the user is authenticated, write some classes into the body tag.
+		 */
+		render : function() {
+			console.log("Authentication.View.render().  model: ", this.model);
+			
+			if (this.model.isAuthenticated()) {
+				$("body").addClass('authenticated');
+			}
+			else {
+				$("body").removeClass('authenticated');
+			}
+			
+			if (this.model.isSiteAdmin()) {
+				$("body").addClass('is-site-admin');
+			}
+			else {
+				$("body").removeClass('is-site-admin');
+			}			
+		}
+	});
+
   // Return the module for AMD compliance.
   return Authentication;
-
 });

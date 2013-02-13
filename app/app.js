@@ -4,13 +4,18 @@
  * This file follows the AMD javascript module format.
  */
 define([
-	// packages that need a mapping in function() below
+	// normally, these packages would need a mapping in function() below
+	// however, when doing a build and swapping out require.js with almond.js,
+	// they aren't being populated correctly.
+	// Since they're global anyway, I can just remove the mappings in function()
+	// and it works.
 	"jquery",
 	"backbone",
 	"handlebars"
 ], 
 function($, Backbone, Handlebars) {
-
+	console.log("app()");
+	
 	/**
 	 * Global location to place configuration settings and module
 	 * reation.
