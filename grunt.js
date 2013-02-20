@@ -1,10 +1,12 @@
 // This is the main application configuration file.  It is a Grunt
 // configuration file, which you can learn more about here:
 // https://github.com/cowboy/grunt/blob/master/docs/configuring.md
+//
+// This is the 0.3.x format, which is now out of date
 module.exports = function(grunt) {
 
   grunt.initConfig({
-
+    
     // The lint task will run the build configuration and the application
     // JavaScript through JSHint and report any errors.  You can change the
     // options for this task, by reading this:
@@ -23,6 +25,10 @@ module.exports = function(grunt) {
         scripturl: true
       }
     },
+    
+    // The clean task ensures all files are removed from the dist/ directory so
+    // that no files linger from previous builds.
+    clean: ["dist/"],
 
     // This task simplifies working with CSS inside Backbone Boilerplate
     // projects.  Instead of manually specifying your stylesheets inside the
@@ -32,6 +38,7 @@ module.exports = function(grunt) {
       // Out the concatenated contents of the following styles into the below
       // development file path.
       "dist/debug/index.css": {
+
         // Location of the source `index.css` file
         src: "app/styles/css/index.css",
 
@@ -42,15 +49,12 @@ module.exports = function(grunt) {
         prefix: "app/styles/css",
 
         // Additional production-only stylesheets here.
-        additional: []
+        additional: ["app/styles/css/index.css"]
       }
     },
     
-	// The handlebars task compiles all handlebars templates into
-	// JavaScript functions.
-	//
+	// Compiles all handlebars templates into JavaScript functions.
 	handlebars: {
-
         built: {
             src: ['app/templates/**/*.handlebars'],
             dest: 'app/templates/templates.js',
@@ -59,45 +63,25 @@ module.exports = function(grunt) {
                     stringParams: true
                 }
           }
-
 	},
-
-    // This task uses James Burke's excellent r.js AMD build tool.  In the
-    // future other builders may be contributed as drop-in alternatives.
-    requirejs: {
-      // Include the main configuration file.
-      mainConfigFile: "app/config.js",
-
-      // Also include the JamJS configuration file.
-      jamConfig: "/vendor/jam/require.config.js",
-
-      // Output file.
-      out: "dist/debug/require.js",
-
-      // Root application module.
-      name: "config",
-
-      // Do not wrap everything in an IIFE.
-      wrap: false,
-
-		include: ['handlebars.runtime', 'compiled_templates'],
-		exclude: ['handlebars']
-    },
-
-    // The concatenate task is used here to merge the almond require/define
-    // shim and the templates into the application code.  It's named
-    // dist/debug/require.js, because we want to only load one script file in
-    // index.html.
+	
+    // Merge all the JS 
     concat: {
       dist: {
         src: [
-          "vendor/js/libs/almond.js",
-      //    "vendor/jam/handlebars.runtime/handlebars.runtime-1.0.rc.1.js",
-      //    "app/templates/templates.js",
-          "dist/debug/require.js",
+		  	"vendor/jam/jquery/jquery-1.9.1.min.js",
+		  	"vendor/jam/lodash/lodash.js",
+			"vendor/js/libs/handlebars1.0.rc.2.js",
+			"vendor/jam/backbone/backbone.js",
+			"app/templates/templates.js",
+			"app/js/app.js",
+			"app/js/authentication.js",
+			"app/js/album.js",
+			"app/js/router.js",
+		  	"app/js/main.js"
         ],
 
-        dest: "dist/debug/require.js",
+        dest: "dist/debug/index.js",
 
         separator: ";"
       }
@@ -115,12 +99,27 @@ module.exports = function(grunt) {
 
     // Takes the built require.js file and minifies it for filesize benefits.
     min: {
-      "dist/release/require.js": [
-        "dist/debug/require.js"
+      "dist/release/index.js": [
+        "dist/debug/index.js"
       ]
     },
 
-    // Running the server without specifying an action will run the defaults,
+    // If you want to generate targeted index.html builds into the `dist/`
+    // folders, uncomment the following configuration block and use the
+    // conditionals inside `index.html`.
+	targethtml: {
+		debug: {
+			src: "index.html",
+			dest: "dist/debug/index.html"
+		},
+		 
+		release: {
+			src: "index.html",
+			dest: "dist/release/index.html"
+		}
+	},
+	
+	// Running the server without specifying an action will run the defaults,
     // port: 8000 and host: 127.0.0.1.  If you would like to change these
     // defaults, simply add in the properties `port` and `host` respectively.
     // Alternatively you can omit the port and host properties and the server
@@ -168,66 +167,7 @@ module.exports = function(grunt) {
           "app/styles": "dist/release"
         }
       }
-    },
-
-    // The headless QUnit testing environment is provided for "free" by Grunt.
-    // Simply point the configuration to your test directory.
-    qunit: {
-      all: ["test/qunit/*.html"]
-    },
-
-    // The headless Jasmine testing is provided by grunt-jasmine-task. Simply
-    // point the configuration to your test directory.
-    jasmine: {
-      all: ["test/jasmine/*.html"]
-    },
-
-    // The watch task can be used to monitor the filesystem and execute
-    // specific tasks when files are modified.  By default, the watch task is
-    // available to compile CSS if you are unable to use the runtime compiler
-    // (use if you have a custom server, PhoneGap, Adobe Air, etc.)
-    watch: {
-      files: ["grunt.js", "vendor/**/*", "app/**/*"],
-      tasks: ["styles"]
-    },
-
-    // The clean task ensures all files are removed from the dist/ directory so
-    // that no files linger from previous builds.
-    clean: ["dist/"],
-
-    // If you want to generate targeted index.html builds into the `dist/`
-    // folders, uncomment the following configuration block and use the
-    // conditionals inside `index.html`.
-	targethtml: {
-		debug: {
-			src: "index.html",
-			dest: "dist/debug/index.html"
-		},
-		 
-		release: {
-			src: "index.html",
-			dest: "dist/release/index.html"
-		}
-	},
-    
-    // This task will copy assets into your build directory,
-    // automatically.  This makes an entirely encapsulated build into
-    // each directory.
-    //copy: {
-    //  debug: {
-    //    files: {
-    //      "dist/debug/app/": "app/**",
-    //      "dist/debug/vendor/": "vendor/**"
-    //    }
-    //  },
-
-    //  release: {
-    //    files: {
-    //      "dist/release/app/": "app/**",
-    //      "dist/release/vendor/": "vendor/**"
-    //    }
-    //  }
-    //}
+    }
 
   });
 
@@ -238,9 +178,11 @@ module.exports = function(grunt) {
   // almond.js and dist/debug/templates.js into the require.js file.
   //grunt.registerTask("debug", "clean lint requirejs concat styles");
   //grunt.registerTask("debug", "clean lint requirejs concat styles");
-  grunt.registerTask("debug", "clean targethtml requirejs concat styles");
+  grunt.registerTask("debug", "clean targethtml concat styles");
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
   grunt.registerTask("release", "debug min mincss");
-
+  
+  
+  grunt.registerTask("default", "debug");
 };

@@ -1,15 +1,8 @@
-// Album module
-define([
-// Require the app.js module before this module can be run
-"app"],
 
-// Map dependencies from above array.
-
-
-function(app) {
-
-	// Create a new module
-	var Album = app.module();
+	// Create the Album object
+	var Album = {
+		Views : {}
+	};
 
 	//
 	// MODELS
@@ -379,7 +372,3 @@ function(app) {
 				thumbnails: thumbnailHtml
 			});
 	};
-
-	// Return the module for AMD compliance.
-	return Album;
-});

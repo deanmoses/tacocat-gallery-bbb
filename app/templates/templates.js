@@ -264,7 +264,7 @@ templates['thumbnail_earlyyears'] = template(function (Handlebars,depth0,helpers
   foundHelper = helpers.url;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.url; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1) + "\"><img src=\"";
+  buffer += escapeExpression(stack1) + "\"><img src=\"http://tacocat.com/pix/img/";
   stack1 = depth0.thumbnail;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.url;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;

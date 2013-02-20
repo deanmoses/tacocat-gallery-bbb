@@ -1,17 +1,9 @@
 /**
- * Authentication module.
- *
- * This file follows the AMD javascript module format.
+ * Authentication
  */
-define([
-  // I require the 'app' module
-  "app"
-],
-// Map dependencies from above array.
-function(app) {
 
-  // create a new module
-  var Authentication = app.module();
+  // create the Authentication object
+  var Authentication = {};
 
 	/**
 	 * Authentication Model
@@ -107,7 +99,3 @@ function(app) {
 			}			
 		}
 	});
-
-  // Return the module for AMD compliance.
-  return Authentication;
-});

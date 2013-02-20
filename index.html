@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <!--(if target dummy)><!-->
-	<title>BBB Tacocat - Dev</title>
+  <title>BBB Tacocat - Dev</title>
   <link rel="stylesheet" href="app/styles/css/index.css">
   <!--<!(endif)-->
-
-  <!--(if target release)>
-	<title>Dean, Lucie, Felix and Milo Moses</title>
+  
+  <!--(if target debug)>
+  <title>BBB Tacocat - Debug</title>
   <link rel="stylesheet" href="index.css">
   <!(endif)-->
-
-  <!--(if target debug)>
-	<title>BBB Tacocat - Debug</title>
+  
+  <!--(if target release)>
+  <title>Dean, Lucie, Felix and Milo Moses</title>
   <link rel="stylesheet" href="index.css">
   <!(endif)-->
 </head>
@@ -24,16 +24,23 @@
   <main role="main" id="main"></main>
 
   <!--(if target dummy)><!-->
-	<!-- Application source -->
-  	<script data-main="app/config" src="vendor/js/libs/require.js"></script>
+  	<script src="vendor/jam/jquery/jquery-1.9.1.min.js"></script>
+  	<script src="vendor/jam/lodash/lodash.js"></script>
+	<script src="vendor/js/libs/handlebars1.0.0-rc.3.js"></script>
+	<script src="vendor/jam/backbone/backbone.js"></script>
+	<script src="app/js/app.js"></script>
+	<script src="app/js/authentication.js"></script>
+	<script src="app/js/album.js"></script>
+	<script src="app/js/router.js"></script>
+  	<script src="app/js/main.js"></script>
   <!--<!(endif)-->
 
-  <!--(if target release)>
-  <script src="require.js"></script>
-  <!(endif)-->
-
   <!--(if target debug)>
-  <script src="require.js"></script>
+  <script src="index.js"></script>
+  <!(endif)-->
+  
+  <!--(if target release)>
+  <script src="index.js"></script>
   <!(endif)-->
 </body>
 </html>
