@@ -36,6 +36,7 @@ a.active:after {
 }
 
 //
+// OVERALL PAGE STRUCTURE
 // The container table is used to layout the overall page
 //
 
@@ -61,42 +62,166 @@ a.active:after {
 #header {
 	position: relative;
 	color: white;
-	background-color: $colorDarkGraySecondary;
-	border-top: 1px solid rgba(255,255,255,.1);
-	border-bottom: solid $colorBorderDarkPrimary 2px;
+	background-color: $colorTextPrimary;
 
 	h1 {
+		display: inline-block;
 		font-family: 'VAGRoundedBT-Regular';
 		font-size: 1.8em;
 		color: $titleColor;
 		letter-spacing: -.02em;
 		cursor: pointer;
 	}
+	
+	.years {
+		color: $titleColor;
+
+		:not(:last-child):after {
+   			content: " | ";
+   			color: #666;
+   		}
+   		
+   		a:hover {
+	   		cursor: pointer;
+   		}
+	}
+	
+	.admin-controls {
+		display: none;
+		position: absolute;
+		bottom: 1;
+		right: 0;
+		font-size: smaller;
+		color: white;
+		background-color: $colorTextPrimary;
+		padding-top: 1em;
+		padding-bottom: 1em;
+		padding-right: 2em;
+		padding-left: 1em;
+		
+		a {
+			cursor: pointer;
+			
+			&:hover {
+				text-decoration: underline !important;	
+			}
+		}
+	}
+}
+
+// show the edit controls on hover by an admin
+body.authenticated #header:hover .admin-controls {
+	display: block;
 }
 
 #body {
 	height: 100%;
 	overflow: hidden;
-	background-color: lightyellow;
 }
 
-// hide the photo edit controls unless the user is a site admin
-body:not(.is-site-admin) .admin-controls {
-	display: none;
+/**
+ * ALBUM PAGE STYLING
+ */
+ 
+.thumbnail {
+	margin: 1em;
+	vertical-align: top;
+	
+	img {
+		border: solid black 1px;
+	}
+	.title {
+		font-weight: bold;
+	}
+	.summary {
+		margin-top: 0.3em;
+	}
+}
+
+.album.year .thumbnails {
+
+	fieldset {
+		display: block;
+		margin: 1em;
+	}
+	
+	legend {
+		font-weight: bold;
+		font-size: 1.3em;
+		background: white;
+		background: #EEE;
+		border-radius: 1em;
+		padding: 0.3em 1em;
+		width: 100%;
+	}
+}
+
+.album.root .thumbnails {
+	.thumbnail {
+		a {
+			vertical-align: top;
+			font-size: 1.5em;
+			padding-left: 0.5em;
+		}
+	}
+}
+
+.album.week .thumbnails {
+	.thumbnail {
+		display: inline-block;
+		a {
+			display: block;
+		}
+	}
+}
+
+.album.year .thumbnails {
+	.thumbnail {
+		display: inline-block;
+		a {
+			display: block;
+		}
+	}
+}
+
+/**
+ * PHOTO PAGE STYLING
+ */
+ 
+.photo-container {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	//border: solid red 2px;
+	//background-color: lightyellow;
+	overflow: hidden;
+
+	img {
+		display: none;
+		position: absolute;
+		width: 100%;
+	}
 }
 
 /*
- * The photo and album captions
+ * PHOTO & ALBUM CAPTIONS
  */
+.photo .caption {
+	max-width: 40em;
+	margin: 0.5em 0;
+}
+.album .caption {
+	margin: 0.5em 1em;
+}
 .caption {
 	font-size: 1.3em;
-	max-width: 40em;
-	
+
 	p {
-		margin-top: 0.5em;
+		margin-top: 0.7em;
+		line-height: 1.3;
 	}
 	
-	p, li {
+	li {
 	  line-height: 1.5;
 	}
 	

@@ -17,4 +17,4 @@ app.authenticationModel.fetch({
 app.router = new Router();
 
 // Trigger the initial route 
-Backbone.history.start({ pushState: false});
+Backbone.history.start({ pushState: false /* turn on/off the HTML5 History API */});

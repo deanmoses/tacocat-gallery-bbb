@@ -7,6 +7,41 @@ var Router = Backbone.Router.extend({
 		"v/*path": "viewAlbum",
 		"*path": "notFound"
 	},
+	
+	/**
+	 * Show the photo page
+	 */
+	viewPhoto: function(path) {
+		var pathParts = path.split("/");
+		var photoId = pathParts.pop();
+		var albumPath = pathParts.join("/");
+		
+		//console.log("Router.viewPhoto() photo " + photoId + " in album " + albumPath);
+		
+		// fetch the album, either from cache or from server
+		Album.Store.fetchAlbum(albumPath)
+			.fail(function(xhr, options) {
+				console("Router.viewPhoto() couldn't find album " + path + ". Error: ", xhr, options);
+			})
+			.done(function(album) {
+				//console.log("Router.viewPhoto() got album " + albumPath + " for photo " + photoId + ".  Album: " , album);
+		
+				var photo = album.getPhotoByPathComponent(photoId);
+				if (!photo) throw "No photo with ID " + photoId;
+				//console.log("Router.viewPhoto() got photo " + photoId, photo);
+				
+				// set the photo's album on the photo so the view can use that info
+				photo.album = album.attributes;
+				photo.nextPhoto = album.getNextPhoto(photoId);
+				photo.prevPhoto = album.getPrevPhoto(photoId);
+				photo.orientation = (photo.height > photo.width) ? "portrait" : "landscape";
+				
+				new Photo.Views.PhotoPage({
+					model: photo,
+					el: $('#main')
+				}).render();
+			});
+	},
 
 	/**
 	 * Show the album page
@@ -18,15 +53,17 @@ var Router = Backbone.Router.extend({
 		path = this.normalizePath(path);
 
 		// fetch album, either from cache or from server
-		Album.Store.fetchAlbum(path).fail(function(xhr, options) {
-			console("Couldn't find album " + path + ". Error: ", xhr, options);
-		}).done(function(album) {
-			//console.log("URL router viewAlbum() got album " + path + ".  Album: " , album);
-			new Album.Views.Main({
-				model: album,
-				el: $('#main')
-			}).render();
-		});
+		Album.Store.fetchAlbum(path)
+			.fail(function(xhr, options) {
+				console("Couldn't find album " + path + ". Error: ", xhr, options);
+			})
+			.done(function(album) {
+				//console.log("URL router viewAlbum() got album " + path + ".  Album: " , album);
+				new Album.Views.Main({
+					model: album,
+					el: $('#main')
+				}).render();
+			});
 	},
 
 	/**

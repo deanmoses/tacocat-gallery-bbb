@@ -82,7 +82,7 @@
 		 * If the user is authenticated, write some classes into the body tag.
 		 */
 		render : function() {
-			console.log("Authentication.View.render().  model: ", this.model);
+			//console.log("Authentication.View.render().  model: ", this.model);
 			
 			if (this.model.isAuthenticated()) {
 				$("body").addClass('authenticated');
@@ -96,6 +96,42 @@
 			}
 			else {
 				$("body").removeClass('is-site-admin');
-			}			
+			}
+			
+			// load the scripts only needed by admins
+			
+			// define a $.cachedScript() method that allows fetching a cached script:
+			jQuery.getCachedScript = function(url, options) {
+ 
+				// allow user to set any option except for dataType, cache, and url
+				options = $.extend(options || {}, {
+					dataType: "script",
+					cache: true,
+					url: url
+				});
+				
+				// Use $.ajax() since it is more flexible than $.getScript
+				// Return the jqXHR object so we can chain callbacks
+				return jQuery.ajax(options);
+			};
+			
+			// load the wysihtml5 rich text editor
+			$.getCachedScript("vendor/js/libs/wysihtml5-0.3.0.min.js")
+				.done(function(script, textStatus) {
+					//console.log("Loaded rich text editor: " + textStatus );
+				})
+				.fail(function(jqxhr, settings, exception) {
+					console.log("Error loading rich text editor: " + exception);
+				});
+			
+			// load the wysihtml5 rich text editor parser rules
+			$.getCachedScript("vendor/js/libs/wysihtml5-parser-rules-advanced.js")
+				.done(function(script, textStatus) {
+					//console.log("Loaded rich text editor parser rules: " + textStatus );
+				})
+				.fail(function(jqxhr, settings, exception) {
+					console.log("Error loading rich text editor parser rules: " + exception);
+				});	
+				
 		}
 	});

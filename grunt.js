@@ -70,13 +70,14 @@ module.exports = function(grunt) {
       dist: {
         src: [
 		  	"vendor/jam/jquery/jquery-1.9.1.min.js",
-		  	"vendor/jam/lodash/lodash.js",
+		  	"vendor/js/libs/lodash.underscore1.0.1.js",
 			"vendor/js/libs/handlebars1.0.rc.2.js",
 			"vendor/jam/backbone/backbone.js",
 			"app/templates/templates.js",
 			"app/js/app.js",
 			"app/js/authentication.js",
 			"app/js/album.js",
+			"app/js/photo.js",
 			"app/js/router.js",
 		  	"app/js/main.js"
         ],

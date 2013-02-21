@@ -4,6 +4,40 @@
  * In a separate file so it can be loaded only for admins, and not in the initial request.
  */
  
+.caption-edit-controls {
+	input[type=text] {
+		font-family: 'VAGRoundedBT-Regular';
+		font-size: 1.8em;
+		letter-spacing: -.02em;
+		display: block;
+		width: 100%;
+		padding: 0;
+		padding: 0.2em;
+	}
+	textarea {
+		display: block;
+		width: 90%;
+		min-height: 8em;
+		font-family: Verdana;
+		font-size: 1.1em;
+		padding: 0.4em;
+		white-space: pre;
+	}
+	.button-group {
+		margin-top: 0.7em;
+		
+		a {
+			&.submit {
+				color: white;
+				font-weight: bold;
+			}
+		}
+	}
+	iframe.wysihtml5-sandbox {
+		min-height: 10em;
+	}
+}
+			
 #wysihtml5-editor-toolbar {
   position: relative;
 

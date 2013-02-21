@@ -36,7 +36,7 @@ var app = {
 	 */
 	getTemplate : function(templateId) {
 		if (Handlebars.templates === undefined || Handlebars.templates[templateId] === undefined) {
-			console.log("app.getTemplate("+templateId+"): fetching from server");
+			//console.log("app.getTemplate("+templateId+"): fetching from server");
 			$.ajax({
 				url : 'app/templates/' + templateId + '.handlebars',
 				async : false
@@ -46,7 +46,7 @@ var app = {
 				}
 				Handlebars.templates[templateId] = Handlebars.compile(data);
 			}).fail(function(data, textStatus, jqXHR) {
-				console.log("failed to retrieve template [" + templateId + "]: " + textStatus);
+				throw "Failed to retrieve template [" + templateId + "]: " + jqXHR
 			});
 		}
 		return Handlebars.templates[templateId];

@@ -7,9 +7,7 @@
     "baseUrl": "./app",
 
     "dependencies": {
-      "backbone": "0.9.10",
-      "jquery": "1.9.1",
-      "lodash": "1.0.0-rc.3"
+      "jquery": "1.9.1"
     }
   }
 }

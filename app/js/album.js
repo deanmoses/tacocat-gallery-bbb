@@ -115,7 +115,7 @@
 			}
 			// else the album is not in cache...
 			else {
-				console.log("Album.Collection.fetchAlbum(): album " + path + " not on client, fetching");
+				//console.log("Album.Collection.fetchAlbum(): album " + path + " not on client, fetching");
 				album = new Album.Model({
 					fullPath: path
 				});
@@ -231,13 +231,13 @@
 			// Generate the thumbnail HTML
 			var thumbnailHtml = "";
 			_.each(album.get("children"), function(child) {
-				//console.log("Album.Views.Week.render() thumbnail child: " + child.title);
+				//console.log("Album.Views.week.getBodyHtml() thumbnail child: " + child.title);
 				thumbnailHtml += app.renderTemplate('thumbnail', child);
 			});
 
 			// Generate the body HTML
 			return app.renderTemplate('album_week_body', {
-				album: album,
+				album: album.attributes,
 				thumbnails: thumbnailHtml
 			});
 	};

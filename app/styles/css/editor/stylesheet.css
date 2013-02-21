@@ -3,11 +3,45 @@
  * 
  * In a separate file so it can be loaded only for admins, and not in the initial request.
  */
-/* line 7, ../../sass/editor/stylesheet.scss */
+/* line 8, ../../sass/editor/stylesheet.scss */
+.caption-edit-controls input[type=text] {
+  font-family: 'VAGRoundedBT-Regular';
+  font-size: 1.8em;
+  letter-spacing: -.02em;
+  display: block;
+  width: 100%;
+  padding: 0;
+  padding: 0.2em;
+}
+/* line 17, ../../sass/editor/stylesheet.scss */
+.caption-edit-controls textarea {
+  display: block;
+  width: 90%;
+  min-height: 8em;
+  font-family: Verdana;
+  font-size: 1.1em;
+  padding: 0.4em;
+  white-space: pre;
+}
+/* line 26, ../../sass/editor/stylesheet.scss */
+.caption-edit-controls .button-group {
+  margin-top: 0.7em;
+}
+/* line 30, ../../sass/editor/stylesheet.scss */
+.caption-edit-controls .button-group a.submit {
+  color: white;
+  font-weight: bold;
+}
+/* line 36, ../../sass/editor/stylesheet.scss */
+.caption-edit-controls iframe.wysihtml5-sandbox {
+  min-height: 10em;
+}
+
+/* line 41, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar {
   position: relative;
 }
-/* line 11, ../../sass/editor/stylesheet.scss */
+/* line 45, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar header {
   display: block;
   border-radius: 4px;
@@ -25,12 +59,12 @@
   font-size: 0;
   text-align: center;
 }
-/* line 29, ../../sass/editor/stylesheet.scss */
+/* line 63, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .commands {
   border-left: 1px solid #dddddd;
   display: inline-block;
 }
-/* line 36, ../../sass/editor/stylesheet.scss */
+/* line 70, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command],
 #wysihtml5-editor-toolbar [data-wysihtml5-action],
 #wysihtml5-editor-toolbar .fore-color {
@@ -44,12 +78,12 @@
   height: 40px;
   width: 68px;
 }
-/* line 50, ../../sass/editor/stylesheet.scss */
+/* line 84, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command]::after,
 #wysihtml5-editor-toolbar [data-wysihtml5-action]::after,
 #wysihtml5-editor-toolbar .fore-color::after {
   content: "";
-  background-image: url('../../../img/editor_spr_toolbar_icons_r1.png');
+  background-image: url('../../../img/editor_spr_toolbar_icons_r1.png?1360208895');
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
@@ -57,7 +91,7 @@
   top: 0;
   bottom: 0;
 }
-/* line 63, ../../sass/editor/stylesheet.scss */
+/* line 97, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command]:hover,
 #wysihtml5-editor-toolbar [data-wysihtml5-action]:hover,
 #wysihtml5-editor-toolbar .fore-color:hover {
@@ -67,51 +101,51 @@
   background-image: -webkit-linear-gradient(bottom, #e5f0e2 0%, white 100%);
   background-image: -ms-linear-gradient(bottom, #e5f0e2 0%, white 100%);
 }
-/* line 71, ../../sass/editor/stylesheet.scss */
+/* line 105, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="bold"]::after {
   background-position: 24px center;
 }
-/* line 75, ../../sass/editor/stylesheet.scss */
+/* line 109, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="italic"]::after {
   background-position: -48px center;
 }
-/* line 79, ../../sass/editor/stylesheet.scss */
+/* line 113, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="insertUnorderedList"]::after {
   background-position: -115px center;
 }
-/* line 83, ../../sass/editor/stylesheet.scss */
+/* line 117, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="insertOrderedList"]::after {
   background-position: -197px center;
 }
-/* line 87, ../../sass/editor/stylesheet.scss */
+/* line 121, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="formatBlock"][data-wysihtml5-command-value="h1"]::after {
   background-position: -344px center;
 }
-/* line 91, ../../sass/editor/stylesheet.scss */
+/* line 125, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="formatBlock"][data-wysihtml5-command-value="h2"]::after {
   background-position: -428px center;
 }
-/* line 95, ../../sass/editor/stylesheet.scss */
+/* line 129, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="createLink"]::after {
   background-position: -271px center;
 }
-/* line 99, ../../sass/editor/stylesheet.scss */
+/* line 133, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="insertImage"]::after {
   background-position: -513px center;
 }
-/* line 103, ../../sass/editor/stylesheet.scss */
+/* line 137, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color::after {
   background-position: -741px center;
 }
-/* line 107, ../../sass/editor/stylesheet.scss */
+/* line 141, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-command="insertSpeech"]::after {
   background-position: -596px center;
 }
-/* line 111, ../../sass/editor/stylesheet.scss */
+/* line 145, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-action="change_view"]::after {
   background-position: -670px center;
 }
-/* line 115, ../../sass/editor/stylesheet.scss */
+/* line 149, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color ul {
   display: none;
   position: absolute;
@@ -124,7 +158,7 @@
   background: #fff;
   overflow: hidden;
 }
-/* line 128, ../../sass/editor/stylesheet.scss */
+/* line 162, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color li {
   display: block;
   margin: 3px;
@@ -132,73 +166,73 @@
   border: 0;
   height: 15px;
 }
-/* line 136, ../../sass/editor/stylesheet.scss */
+/* line 170, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color li::after {
   display: none;
 }
-/* line 140, ../../sass/editor/stylesheet.scss */
+/* line 174, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color:hover ul {
   display: block;
 }
-/* line 144, ../../sass/editor/stylesheet.scss */
+/* line 178, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="silver"] {
   background: silver !important;
 }
-/* line 149, ../../sass/editor/stylesheet.scss */
+/* line 183, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="gray"] {
   background: gray !important;
 }
-/* line 153, ../../sass/editor/stylesheet.scss */
+/* line 187, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="maroon"] {
   background: maroon !important;
 }
-/* line 157, ../../sass/editor/stylesheet.scss */
+/* line 191, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="red"] {
   background: red !important;
 }
-/* line 161, ../../sass/editor/stylesheet.scss */
+/* line 195, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="purple"] {
   background: purple !important;
 }
-/* line 165, ../../sass/editor/stylesheet.scss */
+/* line 199, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="green"] {
   background: green !important;
 }
-/* line 169, ../../sass/editor/stylesheet.scss */
+/* line 203, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="olive"] {
   background: olive !important;
 }
-/* line 173, ../../sass/editor/stylesheet.scss */
+/* line 207, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="navy"] {
   background: navy !important;
 }
-/* line 177, ../../sass/editor/stylesheet.scss */
+/* line 211, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color [data-wysihtml5-command-value="blue"] {
   background: blue !important;
 }
-/* line 181, ../../sass/editor/stylesheet.scss */
+/* line 215, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .fore-color .wysihtml5-command-active {
   outline: 1px solid #666666;
   outline-offset: 1px;
 }
-/* line 186, ../../sass/editor/stylesheet.scss */
+/* line 220, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .wysihtml5-commands-disabled .fore-color ul {
   display: none;
 }
-/* line 191, ../../sass/editor/stylesheet.scss */
+/* line 225, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .wysihtml5-action-active,
 #wysihtml5-editor-toolbar .wysihtml5-command-active {
   box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.2);
   background: #eeeeee !important;
 }
-/* line 197, ../../sass/editor/stylesheet.scss */
+/* line 231, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar .wysihtml5-commands-disabled [data-wysihtml5-command],
 #wysihtml5-editor-toolbar .wysihtml5-commands-disabled .fore-color {
   opacity: 0.4;
   cursor: default;
   background-image: none !important;
 }
-/* line 203, ../../sass/editor/stylesheet.scss */
+/* line 237, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-dialog] {
   color: #333;
   font-size: 14px;
@@ -216,37 +250,37 @@
   text-align: center;
   top: 45px;
 }
-/* line 221, ../../sass/editor/stylesheet.scss */
+/* line 255, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-dialog] input {
   color: #333;
   border: 1px solid #cccccc;
   padding: 3px;
   width: 300px;
 }
-/* line 228, ../../sass/editor/stylesheet.scss */
+/* line 262, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-dialog] input:focus {
   outline: 0;
   border: 1px solid #666666;
 }
-/* line 233, ../../sass/editor/stylesheet.scss */
+/* line 267, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-dialog-action] {
   padding: 4px;
   color: #fff;
   cursor: pointer;
 }
-/* line 239, ../../sass/editor/stylesheet.scss */
+/* line 273, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-dialog-action="save"] {
   background: #007200;
 }
-/* line 243, ../../sass/editor/stylesheet.scss */
+/* line 277, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar [data-wysihtml5-dialog-action="cancel"] {
   background: #999;
 }
-/* line 247, ../../sass/editor/stylesheet.scss */
+/* line 281, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar section {
   margin-top: 1em;
 }
-/* line 251, ../../sass/editor/stylesheet.scss */
+/* line 285, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar textarea {
   font-family: "Courier New", Courier, monospace;
   width: 100%;
@@ -264,13 +298,13 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 269, ../../sass/editor/stylesheet.scss */
+/* line 303, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar textarea:focus {
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
   background: rgba(255, 255, 255, 0.4);
   outline: 0;
 }
-/* line 275, ../../sass/editor/stylesheet.scss */
+/* line 309, ../../sass/editor/stylesheet.scss */
 #wysihtml5-editor-toolbar a.fork {
   position: absolute;
   top: 0;
