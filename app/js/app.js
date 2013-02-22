@@ -14,6 +14,18 @@ var app = {
 	 * The base of the URL for all JSON calls
 	 */
 	baseAjaxUrl: "http://tacocat.com/pictures/main.php?g2_view=",
+	
+	/**
+	 * Set the browser title
+	 */
+	setTitle: function(title) {
+		if (title) {
+			document.title = title + " - Dean, Lucie, Felix and Milo Moses";
+		}
+		else {
+			document.title = "Dean, Lucie, Felix and Milo Moses";
+		}
+	},
 
 	/**
 	 * Helper for managing templates

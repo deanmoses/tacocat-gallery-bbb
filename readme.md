@@ -17,9 +17,7 @@ This uses a development-time build process command line tool called 'bbb' (Backb
 
 It's based off of GruntJS, but comes out of the box with most of the plugins it needs.
 
-isit the 
+Look at the  
 [grunt-bbb](https://github.com/backbone-boilerplate/grunt-bbb)
 plugin repo and follow the instructions to install.  
 
-Basing your project off
-this repo will allow the `bbb` commands to work out-of-the-box.

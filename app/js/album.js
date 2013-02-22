@@ -34,7 +34,7 @@
 		},
 
 		initialize: function() {
-			_.bindAll(this, "getPhotoByPathComponent", "getNextPhoto", "getPrevPhoto");
+			_.bindAll(this, "getPhotoByPathComponent", "getNextPhoto", "getPrevPhoto", "getCreationDate", "getTitle");
 		},
 
 		/**
@@ -74,6 +74,26 @@
 			});
 
 			return prevPhoto;
+		},
+		
+		/**
+		 * Return a javascript Date object of this album's creation time.
+		 */
+		getCreationDate: function() {
+			return new Date(this.attributes.creationTimestamp * 1000);
+		},
+		
+		/**
+		 * Return the title of this album.
+		 */
+		getTitle: function() {
+			if (this.attributes.albumType == "week") {
+				return this.attributes.title + ", " + this.getCreationDate().getFullYear();
+			}
+			else if (this.attributes.albumType == "year") {
+				return this.attributes.title;
+			}
+			return null;
 		}
 	});
 
@@ -140,6 +160,9 @@
 							album.attributes.parentAlbumPath = null;
 							album.attributes.albumType = "root";
 						}
+						
+						// Add a 'fulltitle' attribute accessbile to templating
+						album.attributes.fulltitle = album.getTitle();
 
 						// cache the album
 						that.push(album);
@@ -208,6 +231,9 @@
 
 			// Write the HTML to the DOM
 			this.$el.html(html);
+			
+			// Set the page title
+			app.setTitle(this.model.getTitle())
 
 			// To support chaining
 			return this;
@@ -228,18 +254,19 @@
 	 * Generate the HTML for the body of a week album
 	 */
 	Album.Views.week.getBodyHtml = function(album) {
-			// Generate the thumbnail HTML
-			var thumbnailHtml = "";
-			_.each(album.get("children"), function(child) {
-				//console.log("Album.Views.week.getBodyHtml() thumbnail child: " + child.title);
-				thumbnailHtml += app.renderTemplate('thumbnail', child);
-			});
 
-			// Generate the body HTML
-			return app.renderTemplate('album_week_body', {
-				album: album.attributes,
-				thumbnails: thumbnailHtml
-			});
+		// Generate the thumbnail HTML
+		var thumbnailHtml = "";
+		_.each(album.get("children"), function(child) {
+			//console.log("Album.Views.week.getBodyHtml() thumbnail child: " + child.title);
+			thumbnailHtml += app.renderTemplate('thumbnail', child);
+		});
+
+		// Generate the body HTML
+		return app.renderTemplate('album_week_body', {
+			album: album.attributes,
+			thumbnails: thumbnailHtml
+		});
 	};
 
 	/**
@@ -251,38 +278,39 @@
 	 * Generate the HTML for the body of a year album
 	 */
 	Album.Views.year.getBodyHtml = function(album) {
-			// Generate the thumbnail HTML
-			// Group the child week albums of the year album by month
-			var months = _.groupBy(album.get("children"), function(child) {
-				// create a new javascript Date object based on the timestamp
-				// multiplied by 1000 so that the argument is in milliseconds, not seconds
-				var date = new Date(child.creationTimestamp * 1000);
-				var month = date.getMonth();
-				return month;
-			});
+	
+		// Generate the thumbnail HTML
+		// Group the child week albums of the year album by month
+		var months = _.groupBy(album.get("children"), function(child) {
+			// create a new javascript Date object based on the timestamp
+			// multiplied by 1000 so that the argument is in milliseconds, not seconds
+			var date = new Date(child.creationTimestamp * 1000);
+			var month = date.getMonth();
+			return month;
+		});
 
-			// Template to render an entire month's worth of thumbs
-			var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		// Template to render an entire month's worth of thumbs
+		var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-			// Render the months in reverse chronological order
-			// month[0] = January
-			var thumbnailHtml = "";
-			for (var i = 11; i >= 0; i--) {
-				if (months[i]) {
-					var month = {
-						name: monthNames[i],
-						albums: months[i]
-					};
-					//console.log("Month: ", month);
-					thumbnailHtml += app.renderTemplate('thumbnail_month', month);
-				}
+		// Render the months in reverse chronological order
+		// month[0] = January
+		var thumbnailHtml = "";
+		for (var i = 11; i >= 0; i--) {
+			if (months[i]) {
+				var month = {
+					name: monthNames[i],
+					albums: months[i]
+				};
+				//console.log("Month: ", month);
+				thumbnailHtml += app.renderTemplate('thumbnail_month', month);
 			}
+		}
 
-			// Generate the body HTML
-			return app.renderTemplate('album_year_body', {
-				album: album,
-				thumbnails: thumbnailHtml
-			});
+		// Generate the body HTML
+		return app.renderTemplate('album_year_body', {
+			album: album,
+			thumbnails: thumbnailHtml
+		});
 	};
 
 	/**

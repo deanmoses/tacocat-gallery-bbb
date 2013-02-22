@@ -35,6 +35,9 @@ var Photo = {
 
 			// Write the HTML to the DOM
 			this.$el.html(html);
+			
+			// Set the browser title
+			app.setTitle(this.model.title + " - " + this.model.album.fulltitle);
 	        
 	        // Hook up the image resizing
 	        this.resizeImage(
