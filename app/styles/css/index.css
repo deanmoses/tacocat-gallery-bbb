@@ -1108,11 +1108,10 @@ a:before {
 
 /* line 62, ../sass/index.scss */
 #header {
-  position: relative;
   color: white;
   background-color: #2a2929;
 }
-/* line 67, ../sass/index.scss */
+/* line 66, ../sass/index.scss */
 #header h1 {
   display: inline-block;
   font-family: 'VAGRoundedBT-Regular';
@@ -1121,59 +1120,60 @@ a:before {
   letter-spacing: -.02em;
   cursor: pointer;
 }
-/* line 76, ../sass/index.scss */
-#header .admin-controls {
-  display: none;
-  position: absolute;
-  bottom: 1;
-  right: 0;
-  font-size: smaller;
-  color: white;
-  background-color: #2a2929;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-right: 2em;
-  padding-left: 1em;
-}
-/* line 89, ../sass/index.scss */
-#header .admin-controls a {
-  cursor: pointer;
-}
-/* line 92, ../sass/index.scss */
-#header .admin-controls a:hover {
-  text-decoration: underline !important;
-}
 
-/* line 99, ../sass/index.scss */
+/* line 76, ../sass/index.scss */
 #secondary-header {
   padding: 0.75em 1em;
   background-color: #383c41;
   border-bottom: 1px solid #1b1e21;
   border-top: 1px solid black;
 }
-/* line 105, ../sass/index.scss */
+/* line 82, ../sass/index.scss */
 #secondary-header .years {
   color: white;
 }
-/* line 108, ../sass/index.scss */
+/* line 85, ../sass/index.scss */
 #secondary-header .years :not(:last-child):after {
   content: " | ";
   color: #666;
 }
-/* line 113, ../sass/index.scss */
+/* line 90, ../sass/index.scss */
 #secondary-header .years a:hover {
   cursor: pointer;
 }
 
-/* line 120, ../sass/index.scss */
-body.authenticated #header:hover .admin-controls {
-  display: block;
-}
-
-/* line 124, ../sass/index.scss */
+/* line 96, ../sass/index.scss */
 #body {
   height: 100%;
   overflow: hidden;
+  position: relative;
+}
+
+/* line 102, ../sass/index.scss */
+.admin-controls {
+  position: absolute;
+  left: 0;
+  font-size: smaller;
+  color: white;
+  background-color: #2a2929;
+  padding-left: 1.2em;
+  min-height: 20px;
+  min-width: 150px;
+}
+/* line 112, ../sass/index.scss */
+.admin-controls a {
+  display: none;
+  cursor: pointer;
+}
+/* line 117, ../sass/index.scss */
+.admin-controls :not(:last-child):after {
+  content: " | ";
+  color: #888;
+}
+
+/* line 124, ../sass/index.scss */
+body.authenticated #header .admin-controls:hover a {
+  display: inline;
 }
 
 /**
