@@ -161,7 +161,7 @@
 							album.attributes.albumType = "root";
 						}
 						
-						// Add a 'fulltitle' attribute accessbile to templating
+						// Add a 'fulltitle' attribute accessbile to templatinglululu
 						album.attributes.fulltitle = album.getTitle();
 
 						// cache the album
@@ -219,6 +219,9 @@
 			// Generate the header HTML
 			var headerHtml = app.renderTemplate('album_' + albumType + '_header', this.model.attributes);
 			
+			// Generate the secondary header HTML if any
+			var secondaryHeaderHtml = (Album.Views[albumType]['getSecondaryHeader']) ? Album.Views[albumType].getSecondaryHeader() : undefined;
+			
 			// Generate the thumbnail HTML
 			var bodyHtml = Album.Views[albumType].getBodyHtml(this.model);
 
@@ -226,6 +229,7 @@
 			var html = app.renderTemplate('layout_main', {
 				pageType: 'album ' + albumType,
 				header: headerHtml,
+				secondaryHeader: secondaryHeaderHtml,
 				body: bodyHtml
 			});
 
@@ -311,6 +315,13 @@
 			album: album,
 			thumbnails: thumbnailHtml
 		});
+	};
+	
+	/**
+	 * Generate the HTML of the years navigation 2012 | 2013 | etc..
+	 */
+	Album.Views.year.getSecondaryHeader = function() {
+		return app.renderTemplate('album_year_header_secondary');
 	};
 
 	/**

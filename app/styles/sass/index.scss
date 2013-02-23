@@ -5,7 +5,7 @@
 
 $titleColor: #fff;
 
-html, body, #page {
+html, body, #main, .body {
 	height: 100%;
 	margin: 0;
     padding: 0;
@@ -73,19 +73,6 @@ a.active:after {
 		cursor: pointer;
 	}
 	
-	.years {
-		color: $titleColor;
-
-		:not(:last-child):after {
-   			content: " | ";
-   			color: #666;
-   		}
-   		
-   		a:hover {
-	   		cursor: pointer;
-   		}
-	}
-	
 	.admin-controls {
 		display: none;
 		position: absolute;
@@ -109,6 +96,26 @@ a.active:after {
 	}
 }
 
+#secondary-header {
+	padding: 0.75em 1em;
+	background-color: #383c41;
+	border-bottom: 1px solid #1b1e21;
+	border-top: 1px solid black;
+	
+	.years {
+		color: $titleColor;
+
+		:not(:last-child):after {
+   			content: " | ";
+   			color: #666;
+   		}
+   		
+   		a:hover {
+	   		cursor: pointer;
+   		}
+	}
+}
+
 // show the edit controls on hover by an admin
 body.authenticated #header:hover .admin-controls {
 	display: block;
@@ -122,7 +129,16 @@ body.authenticated #header:hover .admin-controls {
 /**
  * ALBUM PAGE STYLING
  */
- 
+
+.album {
+	height: 100%;
+
+	#body {
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+}
+
 .thumbnail {
 	margin: 1em;
 	vertical-align: top;
