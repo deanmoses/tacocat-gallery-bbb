@@ -230,7 +230,7 @@
 
 			// Generate the layout HTML
 			var html = app.renderTemplate('layout_main', {
-				pageType: 'album ' + albumType,
+				pageType: 'album ' + albumType + (albumType == "year" ? " " + this.model.attributes.title : ""),
 				header: headerHtml,
 				secondaryHeader: secondaryHeaderHtml,
 				body: bodyHtml
