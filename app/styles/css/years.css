@@ -1,0 +1,16 @@
+/* line 9, ../sass/years.scss */
+.album.year.y2013 #header {
+  background-color: #b7c8a4;
+}
+/* line 14, ../sass/years.scss */
+.album.year.y2013 #secondary-header {
+  background-color: #8a9e75;
+}
+/* line 19, ../sass/years.scss */
+.album.year.y2013 #body {
+  background-color: #b1ceb3;
+}
+/* line 24, ../sass/years.scss */
+.album.year.y2013 .firsts {
+  background-color: #8a9e75;
+}

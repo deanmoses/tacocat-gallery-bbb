@@ -172,7 +172,6 @@ a.active:after {
 		& > h1 {
 			font-weight: bold;
 			font-size: 1.3em;
-			background: white;
 			background: #EEE;
 			border-radius: 1em;
 			padding: 0.3em 1em;
@@ -205,11 +204,39 @@ a.active:after {
 	}
 }
 
-.album.year .thumbnails {
-	.thumbnail {
-		display: inline-block;
-		a {
+.album.year {
+	.thumbnails {
+		display: table-cell;
+		width: 100%;
+		
+		.thumbnail {
+			display: inline-block;
+			a {
+				display: block;
+			}
+		}
+	}
+	
+	.firsts {
+		display: table-cell;
+		min-width: 12em;
+		border-top-right-radius: 1em;
+		border-bottom-right-radius: 1em;
+		padding: 1em;
+		background: lightyellow;
+		
+		@media all and (max-width: 500px) {
+			display: none;
+		}
+		
+		p {
+			margin-bottom: 1em;
+		}
+		
+		span {
 			display: block;
+			margin-bottom: 0.1em;
+			font-style: italic;
 		}
 	}
 }
@@ -353,3 +380,5 @@ a.active:after {
 	  color: aqua;
 	}
 }
+
+@import "years";
