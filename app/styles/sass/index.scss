@@ -98,6 +98,15 @@ a.active:after {
 			color: #888;
 		}
 	}
+	
+	// SHOULD be ony defined in editor/stylesheet.css,
+	// but the wysihtml5 editor JS needs it before that's
+	// loaded
+	.caption-edit-controls {
+		textarea {
+			width: 100%;
+		}
+	}
 }
 
 #secondary-header {

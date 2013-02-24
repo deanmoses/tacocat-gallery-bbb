@@ -1146,29 +1146,33 @@ a:before {
   content: " | ";
   color: #888;
 }
+/* line 106, ../sass/index.scss */
+#header .caption-edit-controls textarea {
+  width: 100%;
+}
 
-/* line 103, ../sass/index.scss */
+/* line 112, ../sass/index.scss */
 #secondary-header {
   padding: 0.75em 1em;
   background-color: #383c41;
   border-bottom: 1px solid #1b1e21;
   border-top: 1px solid black;
 }
-/* line 109, ../sass/index.scss */
+/* line 118, ../sass/index.scss */
 #secondary-header .years {
   color: white;
 }
-/* line 112, ../sass/index.scss */
+/* line 121, ../sass/index.scss */
 #secondary-header .years :not(:last-child):after {
   content: " | ";
   color: #666;
 }
-/* line 117, ../sass/index.scss */
+/* line 126, ../sass/index.scss */
 #secondary-header .years a:hover {
   cursor: pointer;
 }
 
-/* line 123, ../sass/index.scss */
+/* line 132, ../sass/index.scss */
 #body {
   height: 100%;
   overflow: hidden;
@@ -1177,40 +1181,40 @@ a:before {
 /**
  * ALBUM PAGE STYLING
  */
-/* line 133, ../sass/index.scss */
+/* line 142, ../sass/index.scss */
 .album {
   height: 100%;
 }
-/* line 136, ../sass/index.scss */
+/* line 145, ../sass/index.scss */
 .album #body {
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-/* line 142, ../sass/index.scss */
+/* line 151, ../sass/index.scss */
 .thumbnail {
   margin: 1em;
   vertical-align: top;
 }
-/* line 146, ../sass/index.scss */
+/* line 155, ../sass/index.scss */
 .thumbnail img {
   border: solid black 1px;
 }
-/* line 149, ../sass/index.scss */
+/* line 158, ../sass/index.scss */
 .thumbnail .title {
   font-weight: bold;
 }
-/* line 152, ../sass/index.scss */
+/* line 161, ../sass/index.scss */
 .thumbnail .summary {
   margin-top: 0.3em;
 }
 
-/* line 159, ../sass/index.scss */
+/* line 168, ../sass/index.scss */
 .album.year .thumbnails .month {
   display: block;
   margin: 1em;
 }
-/* line 163, ../sass/index.scss */
+/* line 172, ../sass/index.scss */
 .album.year .thumbnails .month > h1 {
   font-weight: bold;
   font-size: 1.3em;
@@ -1221,32 +1225,32 @@ a:before {
   width: 100%;
 }
 
-/* line 177, ../sass/index.scss */
+/* line 186, ../sass/index.scss */
 .album.root .thumbnails .thumbnail a {
   vertical-align: top;
   font-size: 1.5em;
   padding-left: 0.5em;
 }
-/* line 182, ../sass/index.scss */
+/* line 191, ../sass/index.scss */
 .album.root .thumbnails .thumbnail a h1 {
   display: inline;
   vertical-align: top;
 }
 
-/* line 191, ../sass/index.scss */
+/* line 200, ../sass/index.scss */
 .album.week .thumbnails .thumbnail {
   display: inline-block;
 }
-/* line 193, ../sass/index.scss */
+/* line 202, ../sass/index.scss */
 .album.week .thumbnails .thumbnail a {
   display: block;
 }
 
-/* line 200, ../sass/index.scss */
+/* line 209, ../sass/index.scss */
 .album.year .thumbnails .thumbnail {
   display: inline-block;
 }
-/* line 202, ../sass/index.scss */
+/* line 211, ../sass/index.scss */
 .album.year .thumbnails .thumbnail a {
   display: block;
 }
@@ -1254,14 +1258,14 @@ a:before {
 /**
  * PHOTO PAGE STYLING
  */
-/* line 212, ../sass/index.scss */
+/* line 221, ../sass/index.scss */
 .photo-container {
   position: relative;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-/* line 220, ../sass/index.scss */
+/* line 229, ../sass/index.scss */
 .photo-container img {
   display: none;
   position: absolute;
@@ -1271,120 +1275,120 @@ a:before {
 /*
  * PHOTO & ALBUM CAPTIONS
  */
-/* line 230, ../sass/index.scss */
+/* line 239, ../sass/index.scss */
 .photo .caption {
   max-width: 40em;
   margin: 0.5em 0;
 }
 
-/* line 234, ../sass/index.scss */
+/* line 243, ../sass/index.scss */
 .album .caption {
   margin: 0.5em 1em;
 }
 
-/* line 237, ../sass/index.scss */
+/* line 246, ../sass/index.scss */
 .caption {
   font-size: 1.3em;
 }
-/* line 240, ../sass/index.scss */
+/* line 249, ../sass/index.scss */
 .caption p {
   margin-top: 0.7em;
   line-height: 1.3;
 }
-/* line 245, ../sass/index.scss */
+/* line 254, ../sass/index.scss */
 .caption li {
   line-height: 1.5;
 }
-/* line 249, ../sass/index.scss */
+/* line 258, ../sass/index.scss */
 .caption a {
   color: inherit;
 }
-/* line 253, ../sass/index.scss */
+/* line 262, ../sass/index.scss */
 .caption strong, .caption b {
   font-weight: bold;
 }
-/* line 257, ../sass/index.scss */
+/* line 266, ../sass/index.scss */
 .caption i, .caption em {
   font-style: italic;
 }
-/* line 261, ../sass/index.scss */
+/* line 270, ../sass/index.scss */
 .caption li {
   margin-left: 30px;
 }
-/* line 265, ../sass/index.scss */
+/* line 274, ../sass/index.scss */
 .caption ul li {
   list-style: disc outside;
 }
-/* line 269, ../sass/index.scss */
+/* line 278, ../sass/index.scss */
 .caption ol li {
   list-style: decimal outside;
 }
-/* line 273, ../sass/index.scss */
+/* line 282, ../sass/index.scss */
 .caption li img {
   vertical-align: middle;
   margin: 2px 5px 5px 0;
 }
-/* line 283, ../sass/index.scss */
+/* line 292, ../sass/index.scss */
 .caption .wysiwyg-color-black {
   color: black;
 }
-/* line 287, ../sass/index.scss */
+/* line 296, ../sass/index.scss */
 .caption .wysiwyg-color-silver {
   color: silver;
 }
-/* line 291, ../sass/index.scss */
+/* line 300, ../sass/index.scss */
 .caption .wysiwyg-color-gray {
   color: gray;
 }
-/* line 295, ../sass/index.scss */
+/* line 304, ../sass/index.scss */
 .caption .wysiwyg-color-white {
   color: white;
 }
-/* line 299, ../sass/index.scss */
+/* line 308, ../sass/index.scss */
 .caption .wysiwyg-color-maroon {
   color: maroon;
 }
-/* line 303, ../sass/index.scss */
+/* line 312, ../sass/index.scss */
 .caption .wysiwyg-color-red {
   color: red;
 }
-/* line 307, ../sass/index.scss */
+/* line 316, ../sass/index.scss */
 .caption .wysiwyg-color-purple {
   color: purple;
 }
-/* line 311, ../sass/index.scss */
+/* line 320, ../sass/index.scss */
 .caption .wysiwyg-color-fuchsia {
   color: fuchsia;
 }
-/* line 315, ../sass/index.scss */
+/* line 324, ../sass/index.scss */
 .caption .wysiwyg-color-green {
   color: green;
 }
-/* line 319, ../sass/index.scss */
+/* line 328, ../sass/index.scss */
 .caption .wysiwyg-color-lime {
   color: lime;
 }
-/* line 323, ../sass/index.scss */
+/* line 332, ../sass/index.scss */
 .caption .wysiwyg-color-olive {
   color: olive;
 }
-/* line 327, ../sass/index.scss */
+/* line 336, ../sass/index.scss */
 .caption .wysiwyg-color-yellow {
   color: yellow;
 }
-/* line 331, ../sass/index.scss */
+/* line 340, ../sass/index.scss */
 .caption .wysiwyg-color-navy {
   color: navy;
 }
-/* line 335, ../sass/index.scss */
+/* line 344, ../sass/index.scss */
 .caption .wysiwyg-color-blue {
   color: blue;
 }
-/* line 339, ../sass/index.scss */
+/* line 348, ../sass/index.scss */
 .caption .wysiwyg-color-teal {
   color: teal;
 }
-/* line 343, ../sass/index.scss */
+/* line 352, ../sass/index.scss */
 .caption .wysiwyg-color-aqua {
   color: aqua;
 }

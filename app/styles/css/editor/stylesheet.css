@@ -16,7 +16,7 @@
 /* line 17, ../../sass/editor/stylesheet.scss */
 .caption-edit-controls textarea {
   display: block;
-  width: 90%;
+  width: 100%;
   min-width: 50em;
   min-height: 8em;
   font-family: Verdana;

@@ -73,8 +73,13 @@ var Photo = {
 					toolbar: "wysihtml5-editor-toolbar", 
 					
 					// stylesheets to display inside the editor iframe
-					stylesheets: ["http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css", "app/styles/css/editor/editor.css"],
-					parserRules:  wysihtml5ParserRules // defined in parser rules set 
+					stylesheets: [
+						"http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css", 
+						"app/styles/css/editor/editor.css"
+					],
+					
+					// name of javascript variable defined in parser rules .js
+					parserRules:  wysihtml5ParserRules
 				}
 			);
 			
