@@ -60,6 +60,7 @@ a.active:after {
 }
 
 #header {
+	position: relative;
 	color: white;
 	background-color: $colorTextPrimary;
 
@@ -70,6 +71,32 @@ a.active:after {
 		color: $titleColor;
 		letter-spacing: -.02em;
 		cursor: pointer;
+	}
+	
+	.admin-controls {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		font-size: smaller;
+		color: $titleColor;
+		padding-left: 1.3em;
+		min-height: 1.7em;
+		min-width: 20em;
+		
+		a {
+			display: none;
+			cursor: pointer;
+		}
+		
+		// show the edit controls on hover by an admin
+		&:hover a {
+			display: inline;
+		}
+		
+		:not(:last-child):after {
+			content: " | ";
+			color: #888;
+		}
 	}
 }
 
@@ -96,33 +123,6 @@ a.active:after {
 #body {
 	height: 100%;
 	overflow: hidden;
-	position: relative;
-}
-
-.admin-controls {
-	position: absolute;
-	left: 0;
-	font-size: smaller;
-	color: white;
-	background-color: $colorTextPrimary;
-	padding-left: 1.2em;
-	min-height: 20px;
-	min-width: 150px;
-	
-	a {
-		display: none;
-		cursor: pointer;
-	}
-	
-	:not(:last-child):after {
-		content: " | ";
-		color: #888;
-	}
-}
-
-// show the edit controls on hover by an admin
-body.authenticated #header .admin-controls:hover a {
-	display: inline;
 }
 
 
