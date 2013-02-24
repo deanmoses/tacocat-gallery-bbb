@@ -159,9 +159,12 @@
 						else {
 							album.attributes.parentAlbumPath = null;
 							album.attributes.albumType = "root";
+							
+							// blank out any title on the root album, we don't want to display it
+							album.attributes.title = undefined;
 						}
 						
-						// Add a 'fulltitle' attribute accessbile to templatinglululu
+						// Add a 'fulltitle' attribute accessbile to templating
 						album.attributes.fulltitle = album.getTitle();
 
 						// cache the album
@@ -267,7 +270,7 @@
 		});
 
 		// Generate the body HTML
-		return app.renderTemplate('album_week_body', {
+		return app.renderTemplate('album_body', {
 			album: album.attributes,
 			thumbnails: thumbnailHtml
 		});
@@ -311,7 +314,7 @@
 		}
 
 		// Generate the body HTML
-		return app.renderTemplate('album_year_body', {
+		return app.renderTemplate('album_body', {
 			album: album,
 			thumbnails: thumbnailHtml
 		});
@@ -406,7 +409,7 @@
 			});
 
 			// Generate the body HTML
-			return app.renderTemplate('album_week_body', {
+			return app.renderTemplate('album_body', {
 				album: album,
 				thumbnails: thumbnailHtml
 			});

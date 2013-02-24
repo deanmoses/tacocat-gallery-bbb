@@ -156,19 +156,19 @@ a.active:after {
 
 .album.year .thumbnails {
 
-	fieldset {
+	.month {
 		display: block;
 		margin: 1em;
-	}
-	
-	legend {
-		font-weight: bold;
-		font-size: 1.3em;
-		background: white;
-		background: #EEE;
-		border-radius: 1em;
-		padding: 0.3em 1em;
-		width: 100%;
+		
+		& > h1 {
+			font-weight: bold;
+			font-size: 1.3em;
+			background: white;
+			background: #EEE;
+			border-radius: 1em;
+			padding: 0.3em 1em;
+			width: 100%;
+		}
 	}
 }
 
@@ -178,6 +178,11 @@ a.active:after {
 			vertical-align: top;
 			font-size: 1.5em;
 			padding-left: 0.5em;
+			
+			h1 {
+				display: inline;
+				vertical-align: top;
+			}
 		}
 	}
 }

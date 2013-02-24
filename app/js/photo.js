@@ -86,6 +86,7 @@ var Photo = {
 				editor.composer.element.addEventListener("keyup", function() {
 					editor.composer.iframe.style.height = editor.composer.element.scrollHeight + "px";
 				});
+				$(".caption-edit-controls").resize();
 			});
 
 			return this;
