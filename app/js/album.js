@@ -91,7 +91,7 @@
 				return this.attributes.title + ", " + this.getCreationDate().getFullYear();
 			}
 			else if (this.attributes.albumType == "year") {
-				return this.attributes.title;
+				return this.attributes.title + " - Dean, Lucie, Felix & Milo Moses";
 			}
 			return null;
 		}

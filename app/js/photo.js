@@ -91,8 +91,10 @@ var Photo = {
 				editor.composer.element.addEventListener("keyup", function() {
 					editor.composer.iframe.style.height = editor.composer.element.scrollHeight + "px";
 				});
-				$(".caption-edit-controls").resize();
 			});
+			
+			// Hide the regular caption
+			$("#body .caption").addClass("hidden");
 
 			return this;
         },
@@ -129,11 +131,17 @@ var Photo = {
 		    else {
 			    console.log("caption / title haven't changed");
 		    }
+		    
+		    // Show the regular caption again
+			$("#body .caption").removeClass("hidden");
         },
         
         handleCaptionCancel : function() {
         	// Show the regular photo UI instead of the edit UI
 	        this.render();
+	        
+	        // Show the regular caption again
+			$("#body .caption").removeClass("hidden");
         },
         
         /**
