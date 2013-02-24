@@ -205,6 +205,10 @@ a.active:after {
 }
 
 .album.year {
+	#body {
+		padding: 0;
+	}
+	
 	.thumbnails {
 		display: table-cell;
 		width: 100%;
@@ -217,17 +221,22 @@ a.active:after {
 		}
 	}
 	
-	.firsts {
+	.firsts-container {
 		display: table-cell;
-		min-width: 12em;
-		border-top-right-radius: 1em;
-		border-bottom-right-radius: 1em;
-		padding: 1em;
-		background: lightyellow;
 		
 		@media all and (max-width: 500px) {
 			display: none;
 		}
+	}
+	
+	.firsts {
+		min-width: 12em;
+		border-top-right-radius: 1em;
+		border-bottom-right-radius: 1em;
+		margin-top: 1em;
+		padding: 1em;
+		background: #EEE;
+		height: 100%;
 		
 		p {
 			margin-bottom: 1em;

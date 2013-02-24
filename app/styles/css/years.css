@@ -14,3 +14,15 @@
 .album.year.y2013 .firsts {
   background-color: #8a9e75;
 }
+/* line 41, ../sass/years.scss */
+.album.year.y2012 #header {
+  background-color: #edb79c;
+}
+/* line 46, ../sass/years.scss */
+.album.year.y2012 #body {
+  background-color: #973450;
+}
+/* line 51, ../sass/years.scss */
+.album.year.y2012 .firsts {
+  background-color: #e77f4b;
+}

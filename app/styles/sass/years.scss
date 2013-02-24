@@ -20,7 +20,7 @@
 			background-color: #b1ceb3;
 		}
 
-		// side column
+		// firsts column
 		.firsts {
 		    background-color: #8a9e75;
 		}
@@ -32,6 +32,29 @@
 	
 		.years a {
 			//color: #685233;
+		}
+	}
+	
+	// 2012
+	&.y2012 {
+		// top banner
+		#header {
+		    background-color: #edb79c;
+		}
+		
+		// thumbnail area
+		#body {
+			background-color: #973450;
+		}
+		
+		// firsts column
+		.firsts {
+			background-color: #e77f4b;
+		}
+
+		// links
+		a {
+			//color: #973450;
 		}
 	}
 }
