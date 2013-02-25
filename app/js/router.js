@@ -8,10 +8,25 @@ var Router = Backbone.Router.extend({
 		"*path": "notFound"
 	},
 	
+	initialize: function() {
+		_.bindAll(this);
+	},
+	
+	wait: function() {
+		$("#waiting").addClass("on");
+	},
+	
+	unwait: function() {
+		$("#waiting").removeClass("on");
+	},
+	
 	/**
 	 * Show the photo page
 	 */
 	viewPhoto: function(path) {
+		var _this = this;
+		this.wait();
+		
 		var pathParts = path.split("/");
 		var photoId = pathParts.pop();
 		var albumPath = pathParts.join("/");
@@ -40,6 +55,9 @@ var Router = Backbone.Router.extend({
 					model: photo,
 					el: $('#main')
 				}).render();
+			})
+			.always(function(){
+				_this.unwait();
 			});
 	},
 
@@ -47,6 +65,8 @@ var Router = Backbone.Router.extend({
 	 * Show the album page
 	 */
 	viewAlbum: function(path) {
+		var _this = this;
+		this.wait();
 		//console.log("Router.viewAlbum(path: [" + path + "])");
 
 		// regularize path by getting rid of any preceding or trailing slashes
@@ -63,6 +83,9 @@ var Router = Backbone.Router.extend({
 					model: album,
 					el: $('#main')
 				}).render();
+			})
+			.always(function(){
+				_this.unwait();
 			});
 	},
 
