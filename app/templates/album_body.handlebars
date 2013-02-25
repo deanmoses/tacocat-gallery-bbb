@@ -5,13 +5,16 @@
 </section>
 {{/if}}
 <div class="container-table">
+	{{#if album.firsts}}
 	<div class="firsts-container">
 		<section class="firsts">
 			<h1 class="hidden">Firsts</h1>
-			<p><span>First poutine</span>Jan 1 (F)</p>
-			<p><span>First dog</span>Feb 16 (F+M)</p>
+			{{#each album.firsts}}
+				<p><span>{{what}}</span>{{when}}{{#if who}} ({{who}}){{/if}}</p>
+			{{/each}}
 		</section>
 	</div>
+	{{/if}}
 	<section class="thumbnails">
 		<h1 class="hidden">Pictures</h1>
 		{{{thumbnails}}}

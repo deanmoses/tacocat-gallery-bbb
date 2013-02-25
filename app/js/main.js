@@ -13,6 +13,10 @@ app.authenticationModel.fetch({
 	}
 });
 
+// Get the firsts
+app.firstsModel = new Firsts.Model();
+app.firstsModel.fetch();
+
 // Create the master router.  We'll trigger all navigation from this instance.
 app.router = new Router();
 

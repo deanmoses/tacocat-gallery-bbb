@@ -154,6 +154,9 @@
 						else if (path.length > 0) {
 							album.attributes.parentAlbumPath = "";
 							album.attributes.albumType = "year";
+							
+							// Make this year's firsts available
+							album.attributes.firsts = app.firstsModel.getFirstsForYear(album.attributes.title);
 						}
 						// else this is the root album
 						else {
@@ -315,7 +318,7 @@
 
 		// Generate the body HTML
 		return app.renderTemplate('album_body', {
-			album: album,
+			album: album.attributes,
 			thumbnails: thumbnailHtml
 		});
 	};

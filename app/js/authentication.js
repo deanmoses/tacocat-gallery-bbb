@@ -27,7 +27,7 @@
 		url : function() {
 			//console.log('models.Authentication.url() called');
 			
-			// if we 
+			// if we're offline / in testing mode
 			if (app.mock) {
 				return "mock/authentication.json.txt";	
 			}
