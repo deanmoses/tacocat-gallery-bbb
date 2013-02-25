@@ -1381,67 +1381,71 @@ a:before {
   vertical-align: middle;
   margin: 2px 5px 5px 0;
 }
-/* line 346, ../sass/index.scss */
+/* line 341, ../sass/index.scss */
+.caption cite {
+  font-style: italic;
+}
+/* line 350, ../sass/index.scss */
 .caption .wysiwyg-color-black {
   color: black;
 }
-/* line 350, ../sass/index.scss */
+/* line 354, ../sass/index.scss */
 .caption .wysiwyg-color-silver {
   color: silver;
 }
-/* line 354, ../sass/index.scss */
+/* line 358, ../sass/index.scss */
 .caption .wysiwyg-color-gray {
   color: gray;
 }
-/* line 358, ../sass/index.scss */
+/* line 362, ../sass/index.scss */
 .caption .wysiwyg-color-white {
   color: white;
 }
-/* line 362, ../sass/index.scss */
+/* line 366, ../sass/index.scss */
 .caption .wysiwyg-color-maroon {
   color: maroon;
 }
-/* line 366, ../sass/index.scss */
+/* line 370, ../sass/index.scss */
 .caption .wysiwyg-color-red {
   color: red;
 }
-/* line 370, ../sass/index.scss */
+/* line 374, ../sass/index.scss */
 .caption .wysiwyg-color-purple {
   color: purple;
 }
-/* line 374, ../sass/index.scss */
+/* line 378, ../sass/index.scss */
 .caption .wysiwyg-color-fuchsia {
   color: fuchsia;
 }
-/* line 378, ../sass/index.scss */
+/* line 382, ../sass/index.scss */
 .caption .wysiwyg-color-green {
   color: green;
 }
-/* line 382, ../sass/index.scss */
+/* line 386, ../sass/index.scss */
 .caption .wysiwyg-color-lime {
   color: lime;
 }
-/* line 386, ../sass/index.scss */
+/* line 390, ../sass/index.scss */
 .caption .wysiwyg-color-olive {
   color: olive;
 }
-/* line 390, ../sass/index.scss */
+/* line 394, ../sass/index.scss */
 .caption .wysiwyg-color-yellow {
   color: yellow;
 }
-/* line 394, ../sass/index.scss */
+/* line 398, ../sass/index.scss */
 .caption .wysiwyg-color-navy {
   color: navy;
 }
-/* line 398, ../sass/index.scss */
+/* line 402, ../sass/index.scss */
 .caption .wysiwyg-color-blue {
   color: blue;
 }
-/* line 402, ../sass/index.scss */
+/* line 406, ../sass/index.scss */
 .caption .wysiwyg-color-teal {
   color: teal;
 }
-/* line 406, ../sass/index.scss */
+/* line 410, ../sass/index.scss */
 .caption .wysiwyg-color-aqua {
   color: aqua;
 }
