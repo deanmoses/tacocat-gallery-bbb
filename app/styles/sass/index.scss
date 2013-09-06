@@ -74,6 +74,13 @@ a.active:after {
 	display: table-cell;
 }
 
+// the image resizing javascript just won't respect margin or padding on lower elements
+// dunno why this works
+.photo .container-table-cell {
+	padding-right: 1em;
+	padding-bottom: 1em;
+}
+
 #header, #body {
 	padding: 1em;
 }

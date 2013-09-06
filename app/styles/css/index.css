@@ -1117,18 +1117,24 @@ a:before {
   display: table-cell;
 }
 
-/* line 77, ../sass/index.scss */
+/* line 79, ../sass/index.scss */
+.photo .container-table-cell {
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+/* line 84, ../sass/index.scss */
 #header, #body {
   padding: 1em;
 }
 
-/* line 81, ../sass/index.scss */
+/* line 88, ../sass/index.scss */
 #header {
   position: relative;
   color: white;
   background-color: #2a2929;
 }
-/* line 86, ../sass/index.scss */
+/* line 93, ../sass/index.scss */
 #header h1 {
   display: inline-block;
   font-family: 'VAGRoundedBT-Regular';
@@ -1136,7 +1142,7 @@ a:before {
   color: white;
   letter-spacing: -.02em;
 }
-/* line 94, ../sass/index.scss */
+/* line 101, ../sass/index.scss */
 #header .admin-controls {
   position: absolute;
   left: 0;
@@ -1147,47 +1153,47 @@ a:before {
   min-height: 1.7em;
   min-width: 20em;
 }
-/* line 104, ../sass/index.scss */
+/* line 111, ../sass/index.scss */
 #header .admin-controls a {
   display: none;
   cursor: pointer;
 }
-/* line 110, ../sass/index.scss */
+/* line 117, ../sass/index.scss */
 #header .admin-controls:hover a {
   display: inline;
 }
-/* line 114, ../sass/index.scss */
+/* line 121, ../sass/index.scss */
 #header .admin-controls :not(:last-child):after {
   content: " | ";
   color: #888;
 }
-/* line 124, ../sass/index.scss */
+/* line 131, ../sass/index.scss */
 #header .caption-edit-controls textarea {
   width: 100%;
 }
 
-/* line 130, ../sass/index.scss */
+/* line 137, ../sass/index.scss */
 #secondary-header {
   padding: 0.75em 1em;
   background-color: #383c41;
   border-bottom: 1px solid #1b1e21;
   border-top: 1px solid black;
 }
-/* line 136, ../sass/index.scss */
+/* line 143, ../sass/index.scss */
 #secondary-header .years {
   color: white;
 }
-/* line 139, ../sass/index.scss */
+/* line 146, ../sass/index.scss */
 #secondary-header .years :not(:last-child):after {
   content: " | ";
   color: #666;
 }
-/* line 144, ../sass/index.scss */
+/* line 151, ../sass/index.scss */
 #secondary-header .years a:hover {
   cursor: pointer;
 }
 
-/* line 150, ../sass/index.scss */
+/* line 157, ../sass/index.scss */
 #body {
   height: 100%;
   overflow: hidden;
@@ -1196,40 +1202,40 @@ a:before {
 /**
  * ALBUM PAGE STYLING
  */
-/* line 160, ../sass/index.scss */
+/* line 167, ../sass/index.scss */
 .album {
   height: 100%;
 }
-/* line 163, ../sass/index.scss */
+/* line 170, ../sass/index.scss */
 .album #body {
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-/* line 169, ../sass/index.scss */
+/* line 176, ../sass/index.scss */
 .thumbnail {
   margin: 1em;
   vertical-align: top;
 }
-/* line 173, ../sass/index.scss */
+/* line 180, ../sass/index.scss */
 .thumbnail img {
   border: solid black 1px;
 }
-/* line 176, ../sass/index.scss */
+/* line 183, ../sass/index.scss */
 .thumbnail .title {
   font-weight: bold;
 }
-/* line 179, ../sass/index.scss */
+/* line 186, ../sass/index.scss */
 .thumbnail .summary {
   margin-top: 0.3em;
 }
 
-/* line 186, ../sass/index.scss */
+/* line 193, ../sass/index.scss */
 .album.year .thumbnails .month {
   display: block;
   margin: 1em;
 }
-/* line 190, ../sass/index.scss */
+/* line 197, ../sass/index.scss */
 .album.year .thumbnails .month > h1 {
   font-weight: bold;
   font-size: 1.3em;
@@ -1239,55 +1245,55 @@ a:before {
   width: 100%;
 }
 
-/* line 203, ../sass/index.scss */
+/* line 210, ../sass/index.scss */
 .album.root .thumbnails .thumbnail a {
   vertical-align: top;
   font-size: 1.5em;
   padding-left: 0.5em;
 }
-/* line 208, ../sass/index.scss */
+/* line 215, ../sass/index.scss */
 .album.root .thumbnails .thumbnail a h1 {
   display: inline;
   vertical-align: top;
 }
 
-/* line 217, ../sass/index.scss */
+/* line 224, ../sass/index.scss */
 .album.week .thumbnails .thumbnail {
   display: inline-block;
 }
-/* line 219, ../sass/index.scss */
+/* line 226, ../sass/index.scss */
 .album.week .thumbnails .thumbnail a {
   display: block;
 }
 
-/* line 226, ../sass/index.scss */
+/* line 233, ../sass/index.scss */
 .album.year #body {
   padding: 0;
 }
-/* line 230, ../sass/index.scss */
+/* line 237, ../sass/index.scss */
 .album.year .thumbnails {
   display: table-cell;
   width: 100%;
 }
-/* line 234, ../sass/index.scss */
+/* line 241, ../sass/index.scss */
 .album.year .thumbnails .thumbnail {
   display: inline-block;
 }
-/* line 236, ../sass/index.scss */
+/* line 243, ../sass/index.scss */
 .album.year .thumbnails .thumbnail a {
   display: block;
 }
-/* line 242, ../sass/index.scss */
+/* line 249, ../sass/index.scss */
 .album.year .firsts-container {
   display: table-cell;
 }
 @media all and (max-width: 500px) {
-  /* line 242, ../sass/index.scss */
+  /* line 249, ../sass/index.scss */
   .album.year .firsts-container {
     display: none;
   }
 }
-/* line 250, ../sass/index.scss */
+/* line 257, ../sass/index.scss */
 .album.year .firsts {
   min-width: 12em;
   border-top-right-radius: 1em;
@@ -1297,11 +1303,11 @@ a:before {
   background: #EEE;
   height: 100%;
 }
-/* line 259, ../sass/index.scss */
+/* line 266, ../sass/index.scss */
 .album.year .firsts p {
   margin-bottom: 1em;
 }
-/* line 263, ../sass/index.scss */
+/* line 270, ../sass/index.scss */
 .album.year .firsts span {
   display: block;
   margin-bottom: 0.1em;
@@ -1311,26 +1317,26 @@ a:before {
 /**
  * PHOTO PAGE STYLING
  */
-/* line 275, ../sass/index.scss */
+/* line 282, ../sass/index.scss */
 .photo.sidebar-text #body {
   display: table;
   table-layout: fixed;
   width: 100%;
 }
-/* line 282, ../sass/index.scss */
+/* line 289, ../sass/index.scss */
 .photo.sidebar-text .photo-container {
   display: table-cell;
   padding: 1em;
 }
 
-/* line 288, ../sass/index.scss */
+/* line 295, ../sass/index.scss */
 .photo-container {
   position: relative;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-/* line 296, ../sass/index.scss */
+/* line 303, ../sass/index.scss */
 .photo-container img {
   display: none;
   position: absolute;
@@ -1340,7 +1346,7 @@ a:before {
 /*
  * PHOTO & ALBUM CAPTIONS
  */
-/* line 307, ../sass/index.scss */
+/* line 314, ../sass/index.scss */
 .photo.sidebar-text .caption {
   width: 26em;
   padding: 1em 0;
@@ -1348,125 +1354,125 @@ a:before {
   text-rendering: optimizeLegibility;
 }
 
-/* line 313, ../sass/index.scss */
+/* line 320, ../sass/index.scss */
 .photo.top-text .caption {
   margin: 0.5em 0;
 }
 
-/* line 317, ../sass/index.scss */
+/* line 324, ../sass/index.scss */
 .album .caption {
   margin: 0.5em 1em;
 }
 
-/* line 320, ../sass/index.scss */
+/* line 327, ../sass/index.scss */
 .caption {
   font-size: 16px;
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
   color: #111;
   line-height: 1.3;
 }
-/* line 327, ../sass/index.scss */
+/* line 334, ../sass/index.scss */
 .caption p {
   margin-top: 0.7em;
 }
-/* line 331, ../sass/index.scss */
+/* line 338, ../sass/index.scss */
 .caption li {
   line-height: 1.5;
 }
-/* line 335, ../sass/index.scss */
+/* line 342, ../sass/index.scss */
 .caption a {
   color: inherit;
 }
-/* line 339, ../sass/index.scss */
+/* line 346, ../sass/index.scss */
 .caption strong, .caption b {
   font-weight: bold;
 }
-/* line 343, ../sass/index.scss */
+/* line 350, ../sass/index.scss */
 .caption i, .caption em {
   font-style: italic;
 }
-/* line 347, ../sass/index.scss */
+/* line 354, ../sass/index.scss */
 .caption li {
   margin-left: 30px;
 }
-/* line 351, ../sass/index.scss */
+/* line 358, ../sass/index.scss */
 .caption ul li {
   list-style: disc outside;
 }
-/* line 355, ../sass/index.scss */
+/* line 362, ../sass/index.scss */
 .caption ol li {
   list-style: decimal outside;
 }
-/* line 359, ../sass/index.scss */
+/* line 366, ../sass/index.scss */
 .caption li img {
   vertical-align: middle;
   margin: 2px 5px 5px 0;
 }
-/* line 364, ../sass/index.scss */
+/* line 371, ../sass/index.scss */
 .caption cite {
   font-style: italic;
 }
-/* line 373, ../sass/index.scss */
+/* line 380, ../sass/index.scss */
 .caption .wysiwyg-color-black {
   color: black;
 }
-/* line 377, ../sass/index.scss */
+/* line 384, ../sass/index.scss */
 .caption .wysiwyg-color-silver {
   color: silver;
 }
-/* line 381, ../sass/index.scss */
+/* line 388, ../sass/index.scss */
 .caption .wysiwyg-color-gray {
   color: gray;
 }
-/* line 385, ../sass/index.scss */
+/* line 392, ../sass/index.scss */
 .caption .wysiwyg-color-white {
   color: white;
 }
-/* line 389, ../sass/index.scss */
+/* line 396, ../sass/index.scss */
 .caption .wysiwyg-color-maroon {
   color: maroon;
 }
-/* line 393, ../sass/index.scss */
+/* line 400, ../sass/index.scss */
 .caption .wysiwyg-color-red {
   color: red;
 }
-/* line 397, ../sass/index.scss */
+/* line 404, ../sass/index.scss */
 .caption .wysiwyg-color-purple {
   color: purple;
 }
-/* line 401, ../sass/index.scss */
+/* line 408, ../sass/index.scss */
 .caption .wysiwyg-color-fuchsia {
   color: fuchsia;
 }
-/* line 405, ../sass/index.scss */
+/* line 412, ../sass/index.scss */
 .caption .wysiwyg-color-green {
   color: green;
 }
-/* line 409, ../sass/index.scss */
+/* line 416, ../sass/index.scss */
 .caption .wysiwyg-color-lime {
   color: lime;
 }
-/* line 413, ../sass/index.scss */
+/* line 420, ../sass/index.scss */
 .caption .wysiwyg-color-olive {
   color: olive;
 }
-/* line 417, ../sass/index.scss */
+/* line 424, ../sass/index.scss */
 .caption .wysiwyg-color-yellow {
   color: yellow;
 }
-/* line 421, ../sass/index.scss */
+/* line 428, ../sass/index.scss */
 .caption .wysiwyg-color-navy {
   color: navy;
 }
-/* line 425, ../sass/index.scss */
+/* line 432, ../sass/index.scss */
 .caption .wysiwyg-color-blue {
   color: blue;
 }
-/* line 429, ../sass/index.scss */
+/* line 436, ../sass/index.scss */
 .caption .wysiwyg-color-teal {
   color: teal;
 }
-/* line 433, ../sass/index.scss */
+/* line 440, ../sass/index.scss */
 .caption .wysiwyg-color-aqua {
   color: aqua;
 }
