@@ -18,7 +18,6 @@ var Photo = {
         
         	// Blank out the display area
         	this.$el.empty();
-        	
 
 			// Generate the header HTML
 			var headerHtml = app.renderTemplate('photo_header', this.model);
@@ -27,8 +26,11 @@ var Photo = {
 			var bodyHtml = app.renderTemplate('photo_body', this.model);
 
 			// Generate the layout HTML
+			var hasLongText = this.model.description && (this.model.description.length > 100 || this.model.description.indexOf('<p') >= 0);
+			var isPortrait = this.model.height > this.model.width;
+			var sidebarClass = isPortrait || hasLongText ? 'sidebar-text' : 'top-text';
 			var html = app.renderTemplate('layout_main', {
-				pageType: 'photo ',
+				pageType: 'photo ' + sidebarClass,
 				header: headerHtml,
 				body: bodyHtml
 			});
