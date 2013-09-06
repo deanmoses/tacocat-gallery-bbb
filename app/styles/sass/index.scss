@@ -278,17 +278,24 @@ a.active:after {
 /**
  * PHOTO PAGE STYLING
  */
-.photo.sidebar-text {
-	#body {
-		//background: green;
-		display: table;
-		table-layout: fixed;
-		width: 100%;
-	}
-	
-	.photo-container {
-		display: table-cell;
-		padding: 1em;
+@media all and (min-width: 1000px) {
+	.photo.sidebar-text {
+		#body {
+			display: table;
+			table-layout: fixed;
+			width: 100%;
+		}
+		
+		.caption {
+			display: table-cell;
+			width: 26em;
+			//padding: 1em 0;
+		}
+		
+		.photo-container {
+			display: table-cell;
+			//padding: 1em;
+		}
 	}
 }
 
@@ -296,9 +303,8 @@ a.active:after {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	//border: solid red 2px;
-	//background-color: lightyellow;
 	overflow: hidden;
+	padding-right: 1em;
 
 	img {
 		display: none;
@@ -310,16 +316,11 @@ a.active:after {
 /*
  * PHOTO & ALBUM CAPTIONS
  */
- 
-.photo.sidebar-text .caption { 
-	width: 26em;
-	padding: 1em 0;
-	display: table-cell;
-	text-rendering: optimizeLegibility;
-}
 .photo.top-text .caption {
-	//max-width: 40em;
-	margin: 0.5em 0;
+	//margin: 0.5em 0;
+}
+.photo .caption {
+	padding-bottom: 0.5em;
 }
 .album .caption {
 	margin: 0.5em 1em;
@@ -330,6 +331,7 @@ a.active:after {
 	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #111;
 	line-height: 1.3;
+	text-rendering: optimizeLegibility;
 	
 	p {
 		margin-top: 0.7em;
